@@ -1,25 +1,12 @@
 Rails.application.routes.draw do
-  get 'profiles/show'
-  get 'duck_photos/new'
-  get 'duck_photos/create'
-  get 'reviews/index'
-  get 'reviews/show'
-  get 'reviews/new'
-  get 'reviews/create'
-  get 'reviews/edit'
-  get 'reviews/update'
-  get 'reviews/destroy'
-  get 'bookings/index'
-  get 'bookings/show'
-  get 'ducks/index'
-  get 'ducks/show'
-  get 'ducks/search'
-  get 'ducks/edit'
-  get 'ducks/update'
-  get 'ducks/new'
-  get 'ducks/create'
-  get 'ducks/destroy'
-  devise_for :users
   root to: 'pages#home'
+  devise_for :users
+  resources :ducks do 
+    resources :bookings, only: [:index, :new, :create]
+    resources :reviews, only: [:index, :new, :create, :edit, :update]
+    resources :duck_photos, only: [:new, :create]
+  end
+  resources :reviews, only: [:show, :destroy] 
+  resources :bookings, only: [:show, :destroy] 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
