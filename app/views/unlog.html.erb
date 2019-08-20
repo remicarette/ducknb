@@ -10,19 +10,19 @@ unlog.html.erb
 
 //SEARCH-->
 <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+<%= text_field_tag :search, params[:search], placeholder: "Search" %>
 <%= submit_tag "Search" %>
 <% end %>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <%= link_to "create", "#", class: "nav-link" %>add a duck
+        <%= link_to "create_duck_path(@duck)" class: "nav-link" %>add a duck
       </li>
       <li class="nav-item">
-        <%= link_to "user-form-signin", "#", class: "nav-link" %>sign in
+        <%= link_to "edit_user_path(@user)", class: "nav-link" %>sign in
       </li>
       <li class="nav-item">
-        <%= link_to "user-form-signup", "#", class: "nav-link" %>sign up
+        <%= link_to "show_profiles_path(@user)", class: "nav-link" %>sign up
       </li>
 
 

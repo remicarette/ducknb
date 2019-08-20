@@ -9,19 +9,19 @@ _navbarlogged.html.erb
   </button> -->
  <!--SEARCH-->
 <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+<%= text_field_tag :search, params[:search], placeholder: "Search" %>
 <%= submit_tag "Search" %>
 <% end %>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <%= link_to "booking", "#", class: "nav-link" %>booking
+        <%= link_to "show_booking_path(@duck)", class: "nav-link" %>booking
       </li>
       <li class="nav-item">
-        <%= link_to "user-myduck", "#", class: "nav-link" %>manage
+        <%= link_to "edit_duck_path(@user)", class: "nav-link" %>manage
       </li>
       <li class="nav-item">
-        <%= link_to "create", "#", class: "nav-link" %>add a duck
+        <%= link_to "create_duck_path(@duck)", class: "nav-link" %>add a duck
       </li>
 
 
