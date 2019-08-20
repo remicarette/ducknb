@@ -1,6 +1,7 @@
 class DucksController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_duck, only: [:show, :edit]
+
   def index
     @ducks = Duck.all
   end
@@ -46,7 +47,6 @@ class DucksController < ApplicationController
   def set_duck
     @duck = Duck.find(params[:id])
   end
-
 
   def duck_params
     params.require(:duck).permit(:name, :race, :sex, :colour, :weight, :birthdate, :tags)
