@@ -1,2 +1,38 @@
-<h1>Ducks#show</h1>
-<p>Find me in app/views/ducks/show.html.erb</p>
+<%= render '/navbarlogged'%>
+  render _navbar.html.erb
+<div class="container"
+  <div>
+    <ul class="" col6 >Ths Duck--
+      <% @ducks.each do |d|%>
+      <li><%=d.name%></li>
+      <li><%=d.city%></li>
+      <li><%=d.race%></li>
+      <li><%=d.sex%></li>
+      <li><%=d.colour%></li>
+      <li><%=d.star%></li>
+      </ul>
+  </div>
+</div>
+
+  <card owner>
+  <form>
+
+<!--
+
+<h2>
+<% content_for(:name) do %>
+  The Duck - <%= @duck.title %>
+<% end %>
+
+<>
+  <h1>
+    <%= @duck.name %>
+    <p>
+      <%= link_to edit_duck_path(@duck) do %><% end %>
+
+      <%= link_to duck_path(@duck), method: :delete, data: { confirm: 'Are you sure?' } do %>
+        </p>
+      <% end %>
+  </h2>
+
+ -->
