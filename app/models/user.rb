@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :ducks, dependent: :destroy
   has_many :bookings, dependent: :destroy
   has_many :reviews, through: :bookings
+  has_many :duck_photos, through: :ducks
 end
