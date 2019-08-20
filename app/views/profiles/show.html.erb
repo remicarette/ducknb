@@ -1,2 +1,17 @@
 <h1>Profiles#show</h1>
 <p>Find me in app/views/profiles/show.html.erb</p>
+<%= params[:id] %>
+
+<% @ducks.each do |duck| %>
+    <%= duck.name %>
+    <%= duck.birthday %>
+    <%= duck.race %>
+    <%= duck.sex %>
+    <%= duck.colour %>
+    <%= duck.weight %>
+    <%= duck.tags %>
+    <% duck.duck_photos.each do |picture| %>
+        <%= picture.url %>
+        <%= picture.name %>
+    <% end %>
+<% end %>
