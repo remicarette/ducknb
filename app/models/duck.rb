@@ -13,3 +13,4 @@ class Duck < ApplicationRecord
   validates :weight, presence: true
   validates :tags, presence: true 
 end
+
