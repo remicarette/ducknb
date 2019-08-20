@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :reviews, through: :bookings
   has_many :duck_photos, through: :ducks
+
+  # validations
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 end
