@@ -13,6 +13,7 @@ class PagesController < ApplicationController
       @ducks_of_the_moment.push(duck)
       ducks.delete(duck)
     end
+    @ducks_of_the_moment.compact!
   end
 
   # Calcul la moyenne de tout les ducks
@@ -23,8 +24,8 @@ class PagesController < ApplicationController
       duck.reviews.each do |review|
         average += review.stars
       end
-      average /= reviews.length
-      list_average.push(average)
+      average /= duck.reviews.length if duck.reviews.size != 0
+      list_average.push(average) if duck.reviews.size != 0
     end
     return list_average.sum / list_average.size
   end
@@ -32,10 +33,10 @@ class PagesController < ApplicationController
   # Filtre les ducks ayant plus de 10 reviews
   def filter_by_reviews
     ducks = Duck.all
-    ducks.each do |duck|
-      ducks.delete(duck) if duck.reviews.size < 10
+    filter_ducks = ducks.select do |duck|
+      duck.reviews.size >= 5
     end
-    return ducks
+    return filter_ducks
   end
 
   # Filtre les ducks ayant une moyenne superieur a la moyenne de tout les ducks
@@ -46,7 +47,7 @@ class PagesController < ApplicationController
       duck.reviews.each do |review|
         average += review.stars
       end
-      average /= reviews.length
+      average /= duck.reviews.length
       ducks.delete(duck) if average < average_references
     end
     return ducks

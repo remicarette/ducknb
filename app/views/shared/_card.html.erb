@@ -1,0 +1,34 @@
+
+<%full_stars = "<i class='fas fa-star'></i>"%>
+<%empty_stars = "<i class='far fa-star'></i>"%>
+<%half_stars = "<i class='fas fa-star-half-alt'></i>"%>
+
+
+<% @ducks_of_the_moment.each do |duck| %>
+<%= link_to duck_path(duck) do %>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cdn.pixabay.com/photo/2018/10/14/23/13/mallard-3747770_1280.jpg)">
+    <%= duck.name %>
+    <div class="avatar">
+      <%= image_tag(duck.user.photo)%>
+    </div>
+    <div class="stars">
+      <p> <%= duck.nb_reviews.to_s + " review(s)"%></p>
+      <%duck.show_stars[0].times do %>
+        <%= full_stars.html_safe %>
+      <%end%>
+      <%duck.show_stars[1].times do %>
+        <%= half_stars.html_safe %>
+      <%end%>
+      <%duck.show_stars[2].times do %>
+        <%= empty_stars.html_safe %>
+      <%end%>
+    </div>
+    <div class="city">
+      <%= duck.user.city%>
+    </div>
+
+
+  </div>
+  <% end %>
+
+<% end %>
