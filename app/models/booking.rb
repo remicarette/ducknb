@@ -6,6 +6,6 @@ class Booking < ApplicationRecord
   validates :user, presence: true
   validates :duck, presence: true
   validates :start, presence: true
-  valdiates :end, presence: true
+  validates :end, presence: true
   validates :status, presence: true
 end
