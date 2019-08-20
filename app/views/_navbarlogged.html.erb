@@ -1,36 +1,42 @@
-_navbarlogged.html.erb
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag 'duck_logo.jpg' class ="logo" %>
-  <% end %>
-<!--
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button> -->
- <!--SEARCH-->
-<%= form_tag(posts_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search" %>
-<%= submit_tag "Search" %>
-<% end %>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon d-flex justify-content-between">
+  <div class="d-flex align-items-center">
+    <span class ="navbar-brand">
+      <%= image_tag 'duck_logo.jpg', class: "navbar-brand" %>Ducknb
+    </span>
+
+    <%= form_tag ducks_path, method: :get, class:'form-inline', enforce_utf8: false do %>
+      <%= text_field_tag :search,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a duck"
+      %>
+      <%= submit_tag "Search", name: nil, class: "btn btn-primary" %>
+    <% end %>
+
+    <!-- <form action="ducks">
+      <input type="text" name="search">
+      <input type="submit" name="" value="Search">
+    </form> -->
+  </div>
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto align-items-center">
       <li class="nav-item">
-        <%= link_to "show_booking_path(@duck)", class: "nav-link" %>booking
+        <%= link_to "Booking", ducks_path, class: "nav-link" %>
+      </li>
+       <li class="nav-item">
+        |
       </li>
       <li class="nav-item">
-        <%= link_to "edit_duck_path(@user)", class: "nav-link" %>manage
+        <%= link_to "Manage", edit_user_registration_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to "create_duck_path(@duck)", class: "nav-link" %>add a duck
+        |
       </li>
-
-
-      <li class="nav-item dropdown">
-        <%= image_tag "avatar", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "", "#", class: "dropdown-item" %>
-          <%= link_to "", "#", class: "dropdown-item" %>
-        </div>
+      <li class="nav-item">
+        <%= link_to "Add a Duck",  new_duck_path, class: "nav-link" %>
       </li>
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar", alt: "avatar" %>
     </ul>
   </div>
+</div>

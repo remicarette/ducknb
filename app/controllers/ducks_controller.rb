@@ -1,6 +1,6 @@
 class DucksController < ApplicationController
 
-  before_action :set_duck, only: [:show, :edit, :new]
+  before_action :set_duck, only: [:show, :edit]
   def index
     @ducks = Duck.all
   end
