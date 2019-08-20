@@ -6,7 +6,7 @@
 
 <% @ducks_of_the_moment.each do |duck| %>
 <%= link_to duck_path(duck) do %>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cdn.pixabay.com/photo/2018/10/14/23/13/mallard-3747770_1280.jpg)">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=duck.duck_photos.first.url%>)">
     <%= duck.name %>
     <div class="avatar">
       <%= image_tag(duck.user.photo)%>
