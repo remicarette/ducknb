@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   has_many :ducks 
   has_many :bookings 
-  has_many :reviews, trough: :bookings
+  has_many :reviews, through: :bookings
 end
