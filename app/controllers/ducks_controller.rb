@@ -9,7 +9,14 @@ class DucksController < ApplicationController
   end
 
   def search
+    @ducks = Duck.all
+    if params[:search]
+    @ducks = Duck.search(params[:search]).order("created_at DESC")
+    else
+    @ducks = Duck.all.order('created_at DESC')
+    end
   end
+
 
   def edit
   end

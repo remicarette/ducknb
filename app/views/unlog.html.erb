@@ -1,0 +1,37 @@
+unlog.html.erb
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to "#", class: "navbar-brand" do %>
+    <%= image_tag logo %>
+  <% end %>
+<!--
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+//SEARCH-->
+<%= form_tag(posts_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+<%= submit_tag "Search" %>
+<% end %>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "create", "#", class: "nav-link" %>add a duck
+      </li>
+      <li class="nav-item">
+        <%= link_to "user-form-signin", "#", class: "nav-link" %>sign in
+      </li>
+      <li class="nav-item">
+        <%= link_to "user-form-signup", "#", class: "nav-link" %>sign up
+      </li>
+
+
+      <li class="nav-item dropdown">
+        <%= image_tag "avatar", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <%= link_to "", "#", class: "dropdown-item" %>
+          <%= link_to "", "#", class: "dropdown-item" %>
+        </div>
+      </li>
+    </ul>
+  </div>
