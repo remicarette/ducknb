@@ -1,3 +1,6 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
+<div class="container">
+  <h3>Ducks of the moment !</h3>
+  <div class="cards">
+    <%= render"shared/card", array: @ducks_of_the_moment%>
+  </div>
+</div>
