@@ -107,11 +107,13 @@ end
 
 # SEEDS DUCKS PHOTOS =========================================
 
+# get all users to get all ducks
+# for each duck, we create a new duckphoto
+
 users = User.all
 
 users.each do |user|
     count = 1
-    
     user.ducks.each do |duck| 
         DuckPhoto.create!(
             duck: duck,
@@ -123,24 +125,100 @@ users.each do |user|
 end
 
 
+# BOOKINGS SEEDS ==============================
+
+# get all users
+# for each users we get ducks 
+# we take 50% ducks 
+# for each of this ducks we create a booking
+# with randoms date
 
 
-puts "Users created : #{User.count}"
-puts "Ducks created : #{Duck.count}"
-puts "Ducks photos created : #{DuckPhoto.count}"
+# add bookings for 50% of ducks 
+
+def create_rand_start_end_dates(duration)
+    year = 2019
+    month = (rand() * 11 + 1).round
+    day = (rand() * 27 + 1).round
+    date = Date.parse("#{year}-#{month}-#{day}")
+    dates = { start: date, end: date+duration }
+end
+
+status = ['pending', 'refused', 'accepted']
+
+@bookings_counter = 0
+
+users.each do |user|
+
+    size = ((user.ducks.size) / 2).round()
+
+    count = 0 
+    size.times do 
+    dates = create_rand_start_end_dates((rand()*21 + 1).round)
+        (rand()*5 + 1).round().times do
+            Booking.create!(
+                user: user,
+                duck: user.ducks[count],
+                start: dates[:start],
+                end: dates[:end],
+                status: status[rand()*status.size]
+            )
+            @bookings_counter += 1    
+        end
+       count += 1
+    end
+end
+
+
+
+
+
+# REVIEWS SEEDS ===============================
+
+bookings = Booking.all 
+
+bookings.each do |booking|
+    Review.create!(
+        booking: booking,
+        content: Faker::Lorem.sentences(number: 1),
+        stars: (rand()*5).round()
+    )
+end
+
+
+
+# SEEDS TEST =================================
+
+puts "Users created : #{User.count}/3"
+puts "Ducks created : #{Duck.count}/12"
+puts "Ducks photos created : #{DuckPhoto.count}/12"
+puts "Bookings created : #{Booking.count}/#{@bookings_counter}"
+puts "Reviews created: #{Review.count}/#{Booking.count}"
 
 renald = User.find_by(first_name: 'renald')
 moritz = User.find_by(first_name: 'moritz')
 simon = User.find_by(first_name: 'simon')
 
-# puts "User 1, ducks created : #{User.where(first_name: 'renald')}"
+puts ""
 puts "Renald"
-puts "Ducks created : #{renald.ducks.size}"
+puts "Ducks created : #{renald.ducks.size}/2"
+puts "Ducks created : #{renald.duck_photos.size}/2"
+puts "Bookings : #{renald.bookings.size}"
+puts "Ducks reviews : #{renald.reviews.size}"
+
 puts ""
 puts "Moritz"
-puts "Ducks created : #{moritz.ducks.size}"
+puts "Ducks created : #{moritz.ducks.size}/6"
+puts "Ducks photos created : #{moritz.duck_photos.size}/6"
+puts "Bookings : #{moritz.bookings.size}"
+puts "Ducks reviews : #{moritz.reviews.size}"
+
+
 puts ""
 puts "Simon"
-puts "Ducks created : #{simon.ducks.size}"
-puts "Ducks photos created : #{simon.duck_photos.size}"
+puts "Ducks created : #{simon.ducks.size}/4"
+puts "Ducks photos created : #{simon.duck_photos.size}/4"
+puts "Bookings : #{simon.bookings.size}"
+puts "Ducks reviews : #{simon.reviews.size}"
+
 
