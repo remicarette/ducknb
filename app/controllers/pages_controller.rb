@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  skip_before_action :authenticate_user!, only: :home
+
   def home
     ducks_of_the_moment(filter_by_average(filter_by_reviews))
   end
