@@ -12,7 +12,7 @@ User.destroy_all
 user1 = User.create!( 
     first_name: 'simon',
     last_name: 'chretien',
-    email: 'simon@test.com',
+    email: 'simon@ducknb.com',
     password: 'azerty',
     birthdate: Date.new(),
     address: '2 avenue des saules',
@@ -25,7 +25,7 @@ user1 = User.create!(
 user2 = User.create!( 
     first_name: 'renald',
     last_name: 'HB',
-    email: 'renald@test.com',
+    email: 'renald@ducknb.com',
     password: 'azerty',
     birthdate: Date.new(),
     address: '2 boulevard carnot',
@@ -37,13 +37,25 @@ user2 = User.create!(
 user3 = User.create!( 
     first_name: 'moritz',
     last_name: 'michalak',
-    email: 'moritzd@test.com',
-    password: 'azerty',
+    email: 'moritzd@ducknb.com',
+    password: 'qwertz',
     birthdate: Date.new(),
     address: '20 boulevard de la liberté',
     zip_code: '59000',
     city: 'Lille',
     photo: 'https://picsum.photos/id/237/250/300'
+)
+
+user4 = User.create!( 
+    first_name: 'remi',
+    last_name: 'carette',
+    email: 'remi@ducknb.com',
+    password: 'azerty',
+    birthdate: Date.new(),
+    address: '20 boulevard de la liberté',
+    zip_code: '59000',
+    city: 'Lille',
+    photo: 'https://picsum.photos/id/237/350/350'
 )
 
 # CREATE 2 / 4 / 6 DUCKS PER USER
@@ -104,6 +116,22 @@ end
         user: user3
     )
 end
+
+# create 10 ducks for user4
+
+10.times do 
+    Duck.create!(
+        birthdate: Date.new(),
+        name: Faker::Creature::Animal.name,
+        race: races[rand_i_races],
+        sex: sexs[rand_i_sexs],
+        colour: Faker::Color.color_name,
+        weight: (rand() * 50 + 10).round,
+        tags: "cool,funny,noisy,smiling",
+        user: user4
+    )
+end
+
 
 # SEEDS DUCKS PHOTOS =========================================
 
@@ -189,25 +217,27 @@ end
 
 # SEEDS TEST =================================
 
-puts "Users created : #{User.count}/3"
-puts "Ducks created : #{Duck.count}/12"
-puts "Ducks photos created : #{DuckPhoto.count}/12"
+puts "Users created : #{User.count}/4"
+puts "Ducks created : #{Duck.count}/22"
+puts "Ducks photos created : #{DuckPhoto.count}/22"
 puts "Bookings created : #{Booking.count}/#{@bookings_counter}"
 puts "Reviews created: #{Review.count}/#{Booking.count}"
 
 renald = User.find_by(first_name: 'renald')
 moritz = User.find_by(first_name: 'moritz')
 simon = User.find_by(first_name: 'simon')
+remi = User.find_by(first_name: 'remi')
+
 
 puts ""
-puts "Renald"
+puts renald.first_name
 puts "Ducks created : #{renald.ducks.size}/2"
 puts "Ducks created : #{renald.duck_photos.size}/2"
 puts "Bookings : #{renald.bookings.size}"
 puts "Ducks reviews : #{renald.reviews.size}"
 
 puts ""
-puts "Moritz"
+puts moritz.first_name
 puts "Ducks created : #{moritz.ducks.size}/6"
 puts "Ducks photos created : #{moritz.duck_photos.size}/6"
 puts "Bookings : #{moritz.bookings.size}"
@@ -215,10 +245,15 @@ puts "Ducks reviews : #{moritz.reviews.size}"
 
 
 puts ""
-puts "Simon"
+puts simon.first_name
 puts "Ducks created : #{simon.ducks.size}/4"
 puts "Ducks photos created : #{simon.duck_photos.size}/4"
 puts "Bookings : #{simon.bookings.size}"
 puts "Ducks reviews : #{simon.reviews.size}"
 
-
+puts ""
+puts remi.first_name
+puts "Ducks created : #{remi.ducks.size}/10"
+puts "Ducks photos created : #{remi.duck_photos.size}/10"
+puts "Bookings : #{remi.bookings.size}"
+puts "Ducks reviews : #{remi.reviews.size}"
