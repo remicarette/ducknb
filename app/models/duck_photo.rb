@@ -4,4 +4,5 @@ class DuckPhoto < ApplicationRecord
   # validations
   validates :url, presence: true
   validates :name, presence: true
+  validates :duck, presence: true
 end
