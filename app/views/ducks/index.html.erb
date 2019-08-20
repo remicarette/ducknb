@@ -1,2 +1,34 @@
-<h1>Ducks#index</h1>
-<p>Find me in app/views/ducks/index.html.erb</p>
+<% url = "https://cdn.theatlantic.com/assets/media/img/mt/2016/07/AP_671014678252/lead_720_405.jpg?mod=1533691512" %>
+
+<h2>Our best ducks in <%= @ducks.first.user.city %></h2>
+<div class = "container">
+  <div class = "row ">
+    <% @ducks.each do |duck| %>
+      <div class = "col-12 col-md-6 col-lg-3">
+
+        <%= link_to duck_path(duck) do %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= url %>');">
+            <div class="card-description">
+              <p><%= duck.name %></p>
+              <img src=duck.user.photo class="card-user avatar-bordered"/>
+              <p><%= duck.reviews.size %> reviews</p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<% console %>
+
+
+
+
+<!--
+
+from lecture:
+
+url = "http://static.giantbomb.com/uploads/original/9/99864/2419866-nes_console_set.png"
+article = Article.new(title: 'NES', body: "A great console")
+article.remote_photo_url = url
+article.save

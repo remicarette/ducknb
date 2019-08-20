@@ -1,5 +1,13 @@
 class DucksController < ApplicationController
   def index
+    @ducks = []
+    users = User.where(city: 'Lille') # params[:query]
+    users.each do |user|
+      user.ducks.each do |duck|
+        @ducks << duck
+      end
+    end
+    return @ducks
   end
 
   def show
