@@ -2,13 +2,13 @@ class DucksController < ApplicationController
   before_action :set_duck, only: [:show, :edit]
   def index
     @ducks = []
-    users = User.where(city: 'Lille') # params[:query]
+    users = User.where(city: params[:search].downcase.capitalize)
     users.each do |user|
       user.ducks.each do |duck|
         @ducks << duck
       end
     end
-    return @ducks
+    return @ducks_url
   end
 
   def show
@@ -16,7 +16,6 @@ class DucksController < ApplicationController
 
   def search
   end
-
 
   def edit
   end
