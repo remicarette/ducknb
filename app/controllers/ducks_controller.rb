@@ -1,11 +1,11 @@
 class DucksController < ApplicationController
-<<<<<<< HEAD
+
 
   before_action :set_duck, only: [:show, :edit, :update, :destroy]
-=======
+
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_duck, only: [:show, :edit, :update]
->>>>>>> 4a399f5041e9d444dfac3657e31c07b1b25bf9a1
+
 
   def index
     @ducks = []
