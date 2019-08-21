@@ -1,7 +1,12 @@
-<div class="container">
-  <h2>Our best ducks in <%= @ducks.first.user.city %></h2>
-  <div class="cards">
-    <%= render"shared/card", array: @ducks %>
+<% if @ducks.count == 0 %>
+  <div class="alert alert-info center-block">
+    <strong>Sorry!</strong> No ducks found in <%= params[:search].downcase.capitalize %> :(
   </div>
-</div>
-
+<% else %>
+  <div class="container">
+    <h2>Our best ducks in <%= @ducks.first.user.city %></h2>
+    <div class="cards">
+      <%= render"shared/card", array: @ducks %>
+    </div>
+  </div>
+<% end %>
