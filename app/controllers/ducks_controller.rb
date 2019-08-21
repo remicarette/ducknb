@@ -7,6 +7,8 @@ class DucksController < ApplicationController
   end
 
   def show
+    @carousel_counter = 1
+    @duck = Duck.find(params[:id])
   end
 
   def search
