@@ -2,7 +2,10 @@
 
   <div class="d-flex align-items-center">
     <span class ="navbar-brand">
-      <%= image_tag 'duck_logo.jpg', class: "navbar-brand" %>Ducknb
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag 'duck_logo.jpg', class: "navbar-brand" %>Ducknb
+      <% end %>
+
     </span>
 
     <%= form_tag ducks_path, method: :get, class:'form-inline', enforce_utf8: false do %>
@@ -19,7 +22,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto align-items-center">
       <li class="nav-item">
-        <%= link_to "Booking", ducks_path, class: "nav-link" %>
+        <%= link_to "Booking", bookings_path, class: "nav-link" %>
       </li>
        <li class="nav-item">
         |
