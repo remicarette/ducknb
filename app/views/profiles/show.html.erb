@@ -3,14 +3,13 @@
   <div class="col-12 d-flex justify-content-around">
     <div>
       <% @user.ducks.each do |duck| %>
-        <div class="card-product d-flex justify-content-between w-75 m-3">
+        <div class="card-product d-flex justify-content-between w-100 m-3">
 
           <!-- image  -->
           <div class="d-flex align-items-center">
             <div class="d-flex align-items-center">
-              <% duck.duck_photos.each do |picture| %>
-                  <%= image_tag picture.url, alt: picture.name, class:"avatar-duck"%>
-              <% end %>
+                  <%# image_tag , alt: picture.name, class:"avatar-duck"%>
+                  <%= cl_image_tag(duck.photo, width: 400, height: 300, crop: :fill, class: "avatar-duck" )%>
             </div>
 
             <!-- card -->
