@@ -4,13 +4,18 @@ class DucksController < ApplicationController
 
   def index
     @ducks = []
-    users = User.where(city: params[:search].downcase.capitalize)
-    users.each do |user|
-      user.ducks.each do |duck|
-        @ducks << duck
-      end
+    if params[:search].present?
+      @users = User.where(city: params[:search].downcase.capitalize)
+    else
+      @users = User.all
     end
-    return @ducks_url
+
+    # users.each do |user|
+    #   user.ducks.each do |duck|
+    #     @ducks << duck
+    #   end
+    # end
+    # return @ducks_url
   end
 
   def show

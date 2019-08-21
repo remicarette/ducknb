@@ -6,18 +6,25 @@
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <% (@duck.duck_photos).size.times do %>
+      <% (@duck.duck_photos.drop(1)).size.times do %>
         <li data-target="#carouselExampleIndicators" data-slide-to="<%= @carousel_counter %>"></li>
         <% @carousel_counter += 1 %>
       <% end %>
     </ol>
 
     <div class="carousel-inner">
-      <% @duck.duck_photos.each do |picture| %>
         <div class="carousel-item active" style="max-height:400px;">
+            <%= cl_image_tag(@duck.duck_photos.first.url,
+                width: 800, height: 400, crop: :fill, class: "d-block w-100") %>
+          <div class="carousel-caption d-none d-md-block">
+            <h5><%= @duck.name %></h5>
+            <p>Your lovely duck</p>
+          </div>
+        </div>
+      <% @duck.duck_photos.drop(1).each do |picture| %>
+        <div class="carousel-item" style="max-height:400px;">
           <%= cl_image_tag(picture.url,
-                width: 800, height: 400, crop: :fill) %>
-          <%= image_tag picture.url, alt: picture.name, class: "d-block w-100" %>
+                width: 800, height: 400, crop: :fill, class: "d-block w-100") %>
           <div class="carousel-caption d-none d-md-block">
             <h5><%= @duck.name %></h5>
             <p>Your lovely duck</p>

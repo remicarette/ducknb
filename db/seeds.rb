@@ -157,11 +157,19 @@ users = User.all
 users.each do |user|
     count = 1
     user.ducks.each do |duck|
-        DuckPhoto.create!(
+        picture = DuckPhoto.new(
             duck: duck,
-            url: "https://picsum.photos/200/300?random=#{count}",
             name: Faker::FunnyName.name
         )
+        picture.remote_url_url = "https://picsum.photos/200/300?random=#{count}"
+        picture.save!
+        count += 1
+        picture = DuckPhoto.new(
+            duck: duck,
+            name: Faker::FunnyName.name
+        )
+        picture.remote_url_url = "https://picsum.photos/200/300?random=#{count}"
+        picture.save!
         count += 1
     end
 end
@@ -192,7 +200,7 @@ status = ['pending', 'refused', 'accepted']
 
 users.each do |user|
 
-    size = ((user.ducks.size) / 2).round()
+    size = user.ducks.size
 
     count = 0
     size.times do
@@ -212,9 +220,6 @@ users.each do |user|
 end
 
 
-
-
-
 # REVIEWS SEEDS ===============================
 
 bookings = Booking.all
@@ -226,6 +231,8 @@ bookings.each do |booking|
         stars: (rand()*5).round()
     )
 end
+
+
 
 
 
