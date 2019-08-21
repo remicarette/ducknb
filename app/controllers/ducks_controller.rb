@@ -48,7 +48,7 @@ class DucksController < ApplicationController
   def destroy
     @duck = Duck.find(params[:id])
     @duck.destroy
-    redirect_to ducks_url, notice: 'Deleted'
+    redirect_to profile_path, notice: 'Deleted'
   end
 
   private
