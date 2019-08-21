@@ -3,11 +3,14 @@ Rails.application.routes.draw do
   devise_for :users
   resources :ducks do
     resources :bookings, only: [:index, :new, :create]
-    resources :reviews, only: [:index, :new, :create, :edit, :update]
     resources :duck_photos, only: [:new, :create]
   end
-  resources :reviews, only: [:show, :destroy]
-  resources :bookings, only: [:show, :destroy]
+  resources :reviews, only: [ :destroy]
+  resources :bookings, only: [:show, :destroy] do
+    resources :reviews, only: [ :new, :create ]
+  end
+
+  resources :reviews, only: [ :edit, :update, :destroy ]
 
   # manage ducks
   get 'profiles/:id/', to: "profiles#show"

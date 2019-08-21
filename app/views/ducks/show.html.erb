@@ -72,12 +72,19 @@
 
 
 
-
   <!-- DISPLAY ALL REVIEWS -->
-  <% @duck.reviews do |review| %>
-    <%= review.content %>
-    <%= review.stars %>
+  <ul>
+  <% @duck.reviews.each do |review| %>
+    <li>
+      <%= review.content %>
+      Stars: <%= review.stars %>
+      <%= link_to "Edit Review", edit_review_path(review) %>
+      <%= link_to review_path(review), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class="fa fa-trash destroy_dose"></i>
+      <% end %>
+    </li>
   <% end %>
+  </ul>
 </div>
 
 
