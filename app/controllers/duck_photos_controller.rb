@@ -1,5 +1,6 @@
 class DuckPhotosController < ApplicationController
   def new
+    @duck_photos
   end
 
   def create

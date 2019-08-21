@@ -14,8 +14,9 @@
 
     <div class="carousel-inner">
       <% @duck.duck_photos.each do |picture| %>
-        <%= picture.url %>
         <div class="carousel-item active" style="max-height:400px;">
+          <%= cl_image_tag(picture.url,
+                width: 800, height: 400, crop: :fill) %>
           <%= image_tag picture.url, alt: picture.name, class: "d-block w-100" %>
           <div class="carousel-caption d-none d-md-block">
             <h5><%= @duck.name %></h5>
