@@ -7,6 +7,49 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+
+#
+
+simon = User.create!(
+    first_name: 'simon',
+    last_name: 'chretien',
+    email: 'simon@ducknb.com',
+    password: 'azerty',
+    birthdate: Date.new(),
+    address: '2 avenue des saules',
+    zip_code: '59000',
+    city: 'Lille',
+    photo: 'https://ca.slack-edge.com/T02NE0241-UL7B9TJRW-8ac16206f4ef-48'
+)
+
+moritz = User.create!(
+    first_name: 'moritz',
+    last_name: 'michalak',
+    email: 'moritzd@ducknb.com',
+    password: 'qwertz',
+    birthdate: Date.new(),
+    address: '20 boulevard de la liberté',
+    zip_code: '59000',
+    city: 'Lille',
+    photo: 'https://ca.slack-edge.com/T02NE0241-UL7BFB5QQ-0a2dc0a5ae19-48'
+)
+
+franck = User.create!(
+    first_name: 'franck',
+    last_name: 'HB',
+    email: 'franck@ducknb.com',
+    password: 'azerty',
+    birthdate: Date.new(),
+    address: '2 boulevard carnot',
+    zip_code: '59000',
+    city: 'Lille',
+    photo: 'https://tmssl.akamaized.net/images/portrait/originals/5594-1542273058.jpg'
+)
+
+
+
+# OLD SEED
+
 User.destroy_all
 
 user1 = User.create!(
