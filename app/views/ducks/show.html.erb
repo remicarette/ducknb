@@ -72,12 +72,29 @@
 
 
 
+
+
+
   <!-- DISPLAY ALL REVIEWS -->
   <ul>
-  <% @duck.reviews.each do |review| %>
+    <%full_stars = "<i class='fas fa-star'></i>"%>
+    <%empty_stars = "<i class='far fa-star'></i>"%>
+    <% @duck.reviews.each do |review| %>
     <li>
+
+      <% full = review.stars.to_i %>
+      <% empty = (5 - full).to_i %>
+
       <%= review.content %>
-      Stars: <%= review.stars %>
+      <div class="stars">
+      <%full.times do %>
+        <%= full_stars.html_safe %>
+      <%end%>
+      <%empty.times do %>
+        <%= empty_stars.html_safe %>
+      <%end%>
+    </div>
+
       <%= link_to "Edit Review", edit_review_path(review) %>
       <%= link_to review_path(review), method: :delete, data: { confirm: "Are you sure?" } do %>
         <i class="fa fa-trash destroy_dose"></i>
