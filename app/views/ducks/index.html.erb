@@ -5,7 +5,7 @@
     <% @ducks.each do |card| %>
       <li data-duck-id="<%= duck.id %>"
         <%= duck.name %>
-        <%= link_to "card" %>
+        <%= img_tag '/shared/card', class="card" %>
       </li>
     <% end %>
   </ul>
