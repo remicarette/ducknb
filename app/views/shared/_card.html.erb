@@ -7,7 +7,7 @@
 <% array.each do |duck| %>
 <%= link_to duck_path(duck) do %>
   <!--  -->
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=duck.duck_photos.first.url%>)">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=duck.photo %>)">
     <%= duck.name %>
     <div class="avatar">
       <%= image_tag(duck.user.photo)%>
