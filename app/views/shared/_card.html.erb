@@ -4,7 +4,7 @@
 <%half_stars = "<i class='fas fa-star-half-alt'></i>"%>
 
 
-<% @ducks_of_the_moment.each do |duck| %>
+<% array.each do |duck| %>
 <%= link_to duck_path(duck) do %>
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=duck.duck_photos.first.url%>)">
     <%= duck.name %>
