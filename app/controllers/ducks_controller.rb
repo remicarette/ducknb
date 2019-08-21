@@ -4,13 +4,11 @@ class DucksController < ApplicationController
 
   def index
     @ducks = []
-    users = User.where(city: params[:search].downcase.capitalize)
-    users.each do |user|
-      user.ducks.each do |duck|
-        @ducks << duck
-      end
+    if params[:search].present?
+      @users = User.where(city: params[:search].downcase.capitalize)
+    else
+      @users = User.all
     end
-    return @ducks_url
   end
 
   def show
@@ -30,6 +28,8 @@ class DucksController < ApplicationController
 
   def create
     @duck = Duck.new(duck_params)
+    @duck.user = current_user
+
     if @duck.save
       redirect_to @duck, notice: 'Your duck was created.'
     else
@@ -58,6 +58,7 @@ class DucksController < ApplicationController
   end
 
   def duck_params
-    params.require(:duck).permit(:name, :race, :sex, :colour, :weight, :birthdate, :tags)
+    params.require(:duck).permit(:name, :race, :sex, :colour, :weight, :birthdate, :tags, :photo)
   end
+
 end
