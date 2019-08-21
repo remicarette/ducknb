@@ -1,16 +1,25 @@
 class DucksController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_duck, only: [:show, :edit, :update]
+
   def index
-    @ducks = Duck.all
+    @ducks = []
+    users = User.where(city: params[:search].downcase.capitalize)
+    users.each do |user|
+      user.ducks.each do |duck|
+        @ducks << duck
+      end
+    end
+    return @ducks_url
   end
 
   def show
+    @carousel_counter = 1
+    @duck = Duck.find(params[:id])
   end
 
   def search
   end
-
 
   def edit
   end
@@ -46,7 +55,6 @@ class DucksController < ApplicationController
   def set_duck
     @duck = Duck.find(params[:id])
   end
-
 
   def duck_params
     params.require(:duck).permit(:name, :race, :sex, :colour, :weight, :birthdate, :tags)
