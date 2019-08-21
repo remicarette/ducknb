@@ -108,9 +108,9 @@ fly = create_duck(simon, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9Gc
 baby = create_duck(simon, "https://steamuserimages-a.akamaihd.net/ugc/939434973168766379/D1167147811884D24C9435D5D5C784132B412209/", "Baby love")
 tasty = create_duck(simon, "https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2018.2F07.2F30.2Fc59bd4cd-4f02-43e3-a450-360e224dfc87.2Ejpeg/748x372/quality/80/crop-from/center/magret-de-canard-aux-pommes.jpeg", "Tasy duck")
 
-create_duck(moritz, "https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2018.2F07.2F30.2Fc59bd4cd-4f02-43e3-a450-360e224dfc87.2Ejpeg/748x372/quality/80/crop-from/center/magret-de-canard-aux-pommes.jpeg", "Tasy duck")
-create_duck(moritz, "https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2018.2F07.2F30.2Fc59bd4cd-4f02-43e3-a450-360e224dfc87.2Ejpeg/748x372/quality/80/crop-from/center/magret-de-canard-aux-pommes.jpeg", "Tasy duck")
-create_duck(moritz, "https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2018.2F07.2F30.2Fc59bd4cd-4f02-43e3-a450-360e224dfc87.2Ejpeg/748x372/quality/80/crop-from/center/magret-de-canard-aux-pommes.jpeg", "Tasy duck")
+create_duck(moritz, "https://www.hotspringworld.co.uk/wp-content/uploads/2019/05/Bikini-Duck.jpg  ", "Bikini duck")
+create_duck(moritz, "https://i.kym-cdn.com/photos/images/original/001/248/525/3e4.jpg", "Banana duck")
+create_duck(moritz, "https://thenypost.files.wordpress.com/2017/05/ducks2.jpg?quality=90&strip=all", "Escort duck")
 
 
 puts "Create Reviews"
