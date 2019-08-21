@@ -1,2 +1,17 @@
 <h1>Ducks#edit</h1>
-<p>Find me in app/views/ducks/edit.html.erb</p>
+<div class= "container">
+  <div>
+      <%= simple_form_for @duck do |f| %>
+      <%= f.input :name %>
+      <%= f.input :birthdate %>
+      <%= f.input :race %>
+      <%= f.input :sex %>
+      <%= f.input :weight %>
+      <%= f.input :colour %>
+      <%= f.input :tags %>
+    <%= f.submit "edit your duck", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+
