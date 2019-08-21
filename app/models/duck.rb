@@ -3,7 +3,7 @@ class Duck < ApplicationRecord
   has_many :duck_photos, dependent: :destroy
   has_many :bookings, dependent: :destroy
   has_many :reviews, through: :bookings
-  
+
   validates :birthdate, presence: true
   validates :user, presence: true
   validates :name, presence: true
@@ -11,11 +11,15 @@ class Duck < ApplicationRecord
   validates :sex, presence: true
   validates :colour, presence: true
   validates :weight, presence: true
-  validates :tags, presence: true 
+  validates :tags, presence: true
 
   def rating_average
     average = reviews.sum(&:stars).fdiv(reviews.count)
-    return round_to_half(average)
+    if average.nan?
+      return 0
+    else
+      return round_to_half(average)
+    end
   end
 
   def round_to_half(float)
