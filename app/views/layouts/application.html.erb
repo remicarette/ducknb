@@ -14,9 +14,9 @@
     <%= render 'shared/flashes' %>
 
     <% if user_signed_in? %>
-      <%= render '/navbarlogged'%>
+      <%= render 'shared/navbarlogged', user: current_user %>
     <% else %>
-      <%= render '/navbarhome' %>
+      <%= render 'shared/navbarhome' %>
     <% end %>
 
 
