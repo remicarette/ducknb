@@ -1,0 +1,72 @@
+.card-booking {
+  overflow: hidden;
+  height: 60px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  position: relative;
+}
+
+.card-booking img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-booking h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-booking p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-booking .refused {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+  color: red;
+  position: absolute;
+  right: 10px;
+  top: 20px
+
+}
+
+.card-booking .accepted {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+  color: green;
+  position: absolute;
+  right: 10px;
+  top: 20px
+}
+
+.card-booking .pending {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+  color: #FFD700;
+  position: absolute;
+  right: 10px;
+  top: 20px
+}
+
+.card-booking .card-booking-infos {
+  padding: 16px;
+}
