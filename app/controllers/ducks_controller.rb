@@ -9,13 +9,6 @@ class DucksController < ApplicationController
     else
       @users = User.all
     end
-
-    # users.each do |user|
-    #   user.ducks.each do |duck|
-    #     @ducks << duck
-    #   end
-    # end
-    # return @ducks_url
   end
 
   def show
@@ -35,7 +28,11 @@ class DucksController < ApplicationController
 
   def create
     @duck = Duck.new(duck_params)
-    if @duck.save
+    @duck.user = current_user
+    @picture = DuckPhoto.new(duck_photo_params)
+    @picture.duck = @duck
+
+    if @duck.save && @picture.save
       redirect_to @duck, notice: 'Your duck was created.'
     else
       render :new
@@ -63,5 +60,9 @@ class DucksController < ApplicationController
 
   def duck_params
     params.require(:duck).permit(:name, :race, :sex, :colour, :weight, :birthdate, :tags)
+  end
+
+  def duck_photo_params
+  params.require(:duck_photo).permit(:url, :name, :duck)
   end
 end
