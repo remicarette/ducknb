@@ -1,17 +1,42 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
-<%= params[:id] %>
 
-<% @ducks.each do |duck| %>
-    <%= duck.name %>
-    <%= duck.birthday %>
-    <%= duck.race %>
-    <%= duck.sex %>
-    <%= duck.colour %>
-    <%= duck.weight %>
-    <%= duck.tags %>
-    <% duck.duck_photos.each do |picture| %>
-        <%= picture.url %>
-        <%= picture.name %>
-    <% end %>
-<% end %>
+<div class="container">
+  <div class="col-12 d-flex justify-content-around">
+    <div>
+      <% @user.ducks.each do |duck| %>
+        <div class="card-product d-flex justify-content-between w-75 m-3">
+
+          <!-- image  -->
+          <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center">
+              <% duck.duck_photos.each do |picture| %>
+                  <%= image_tag picture.url, alt: picture.name, class:"avatar-duck"%>
+              <% end %>
+            </div>
+
+            <!-- card -->
+            <div class="card-product-infos">
+                <h2><%= duck.name.capitalize %></h2>
+                <p>Product description with <strong>relevant info</strong> only.</p>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center">
+            <div>
+              <%= link_to "More details", duck_path, class: "btn btn-primary mx-2" %>
+            </div>
+
+            <div>
+              <%= link_to "Edit", duck_path, class: "btn btn-warning mx-2" %>
+            </div>
+
+            <div>
+              <%= link_to "Delete", duck_path, class: "btn btn-danger mx-2"%>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
