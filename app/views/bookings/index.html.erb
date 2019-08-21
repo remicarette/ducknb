@@ -3,7 +3,7 @@
     <%@bookings.each do |booking|%>
     <%= link_to booking_path(booking), class: "text-decoration-none" do %>
       <div class="card-booking">
-      <%= image_tag(booking.duck.duck_photos.first.url)%>
+      <%= image_tag(booking.duck.photo) %>
       <div class="card-booking-infos">
         <h2>You want <%= booking.duck.name%></h2>
         <p>From <%= booking.start%> Until <%= booking.end%></p>

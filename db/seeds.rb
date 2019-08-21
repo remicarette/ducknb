@@ -120,7 +120,7 @@ end
 # create 10 ducks for user4
 
 10.times do
-    Duck.create!(
+    d = Duck.new(
         birthdate: Date.new(),
         name: Faker::Creature::Animal.name,
         race: races[rand_i_races],
@@ -130,6 +130,9 @@ end
         tags: "cool,funny,noisy,smiling",
         user: user4
     )
+
+    d.remote_photo_url = "https://picsum.photos/200/300"
+    d.save!
 end
 
 
@@ -140,39 +143,39 @@ end
 
 # CLOUDINARY SEED
 
-url = "https://upload.wikimedia.org/wikipedia/commons/a/a1/Mallard2.jpg"
-duck = Duck.last
-picture = DuckPhoto.new(name: 'Cloudinary test', duck: duck)
-picture.remote_url_url = url
-picture.save!
+# url = "https://upload.wikimedia.org/wikipedia/commons/a/a1/Mallard2.jpg"
+# duck = Duck.last
+# picture = DuckPhoto.new(name: 'Cloudinary test', duck: duck)
+# picture.remote_photo_url = url
+# picture.save!
 
 
-url = "https://www.ducks.ca/assets/2016/11/mallard-hen.jpg"
-picture2 = DuckPhoto.new(name: 'Cloudinary test 2', duck: duck)
-picture2.remote_url_url = url
-picture2.save!
+# url = "https://www.ducks.ca/assets/2016/11/mallard-hen.jpg"
+# picture2 = DuckPhoto.new(name: 'Cloudinary test 2', duck: duck)
+# picture2.remote_photo_url = url
+# picture2.save!
 
-users = User.all
+# users = User.all
 
-users.each do |user|
-    count = 1
-    user.ducks.each do |duck|
-        picture = DuckPhoto.new(
-            duck: duck,
-            name: Faker::FunnyName.name
-        )
-        picture.remote_url_url = "https://picsum.photos/200/300?random=#{count}"
-        picture.save!
-        count += 1
-        picture = DuckPhoto.new(
-            duck: duck,
-            name: Faker::FunnyName.name
-        )
-        picture.remote_url_url = "https://picsum.photos/200/300?random=#{count}"
-        picture.save!
-        count += 1
-    end
-end
+# users.each do |user|
+#     count = 1
+#     user.ducks.each do |duck|
+#         picture = DuckPhoto.new(
+#             duck: duck,
+#             name: Faker::FunnyName.name
+#         )
+#         picture.remote_url_url = "https://picsum.photos/200/300?random=#{count}"
+#         picture.save!
+#         count += 1
+#         picture = DuckPhoto.new(
+#             duck: duck,
+#             name: Faker::FunnyName.name
+#         )
+#         picture.remote_url_url = "https://picsum.photos/200/300?random=#{count}"
+#         picture.save!
+#         count += 1
+#     end
+# end
 
 
 # BOOKINGS SEEDS ==============================
@@ -197,6 +200,8 @@ end
 status = ['pending', 'refused', 'accepted']
 
 @bookings_counter = 0
+
+users = User.all
 
 users.each do |user|
 
