@@ -1,17 +1,28 @@
 class DucksController < ApplicationController
+<<<<<<< HEAD
 
   before_action :set_duck, only: [:show, :edit, :update, :destroy]
+=======
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_duck, only: [:show, :edit, :update]
+>>>>>>> 4a399f5041e9d444dfac3657e31c07b1b25bf9a1
 
   def index
-    @ducks = Duck.all
+    @ducks = []
+    if params[:search].present?
+      @users = User.where(city: params[:search].downcase.capitalize)
+    else
+      @users = User.all
+    end
   end
 
   def show
+    @carousel_counter = 1
+    @duck = Duck.find(params[:id])
   end
 
   def search
   end
-
 
   def edit
   end
@@ -22,6 +33,8 @@ class DucksController < ApplicationController
 
   def create
     @duck = Duck.new(duck_params)
+    @duck.user = current_user
+
     if @duck.save
       redirect_to @duck, notice: 'Your duck was created.'
     else
@@ -48,8 +61,8 @@ class DucksController < ApplicationController
     @duck = Duck.find(params[:id])
   end
 
-
   def duck_params
-    params.require(:duck).permit(:name, :race, :sex, :colour, :weight, :birthdate, :tags)
+    params.require(:duck).permit(:name, :race, :sex, :colour, :weight, :birthdate, :tags, :photo)
   end
+
 end

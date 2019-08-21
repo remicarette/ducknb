@@ -1,2 +1,16 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
+<div class="container">
+
+    <%@bookings.each do |booking|%>
+    <%= link_to booking_path(booking), class: "text-decoration-none" do %>
+      <div class="card-booking">
+      <%= image_tag(booking.duck.photo) %>
+      <div class="card-booking-infos">
+        <h2>You want <%= booking.duck.name%></h2>
+        <p>From <%= booking.start%> Until <%= booking.end%></p>
+        <div class=<%= booking.status%>> <%= booking.status%> </div>
+      </div>
+      </div>
+    <%end%>
+    <%end%>
+
+</div>

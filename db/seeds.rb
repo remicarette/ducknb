@@ -9,7 +9,7 @@ require 'faker'
 
 User.destroy_all
 
-user1 = User.create!( 
+user1 = User.create!(
     first_name: 'simon',
     last_name: 'chretien',
     email: 'simon@ducknb.com',
@@ -18,11 +18,11 @@ user1 = User.create!(
     address: '2 avenue des saules',
     zip_code: '59000',
     city: 'Lille',
-    photo: 'https://picsum.photos/id/237/200/200'
+    photo: 'https://picsum.photos/id/236/200/200'
 )
 
 
-user2 = User.create!( 
+user2 = User.create!(
     first_name: 'renald',
     last_name: 'HB',
     email: 'renald@ducknb.com',
@@ -34,7 +34,7 @@ user2 = User.create!(
     photo: 'https://picsum.photos/id/237/300/250'
 )
 
-user3 = User.create!( 
+user3 = User.create!(
     first_name: 'moritz',
     last_name: 'michalak',
     email: 'moritzd@ducknb.com',
@@ -43,10 +43,10 @@ user3 = User.create!(
     address: '20 boulevard de la liberté',
     zip_code: '59000',
     city: 'Lille',
-    photo: 'https://picsum.photos/id/237/250/300'
+    photo: 'https://picsum.photos/id/238/250/300'
 )
 
-user4 = User.create!( 
+user4 = User.create!(
     first_name: 'remi',
     last_name: 'carette',
     email: 'remi@ducknb.com',
@@ -55,13 +55,13 @@ user4 = User.create!(
     address: '20 boulevard de la liberté',
     zip_code: '59000',
     city: 'Lille',
-    photo: 'https://picsum.photos/id/237/350/350'
+    photo: 'https://picsum.photos/id/239/350/350'
 )
 
 # CREATE 2 / 4 / 6 DUCKS PER USER
 
 races = [
-    'Canard de Pékin', 
+    'Canard de Pékin',
     'Canard de Rouen',
     'Coureur Indien',
     'Canard Huppé',
@@ -75,7 +75,7 @@ rand_i_races = (rand() * races.size - 1).round
 rand_i_sexs = (rand() * sexs.size - 1).round
 
 # create 4 ducks for user 1
-4.times do 
+4.times do
     Duck.create!(
         birthdate: Date.new(),
         name: Faker::Creature::Animal.name,
@@ -89,7 +89,7 @@ rand_i_sexs = (rand() * sexs.size - 1).round
 end
 
 # create 2 ducks for user2
-2.times do 
+2.times do
     Duck.create!(
         birthdate: Date.new(),
         name: Faker::Creature::Animal.name,
@@ -104,7 +104,7 @@ end
 
 # create 6 ducks for user3
 
-6.times do 
+6.times do
     Duck.create!(
         birthdate: Date.new(),
         name: Faker::Creature::Animal.name,
@@ -119,8 +119,8 @@ end
 
 # create 10 ducks for user4
 
-10.times do 
-    Duck.create!(
+10.times do
+    d = Duck.new(
         birthdate: Date.new(),
         name: Faker::Creature::Animal.name,
         race: races[rand_i_races],
@@ -130,6 +130,9 @@ end
         tags: "cool,funny,noisy,smiling",
         user: user4
     )
+
+    d.remote_photo_url = "https://picsum.photos/200/300"
+    d.save!
 end
 
 
@@ -138,31 +141,53 @@ end
 # get all users to get all ducks
 # for each duck, we create a new duckphoto
 
-users = User.all
+# CLOUDINARY SEED
 
-users.each do |user|
-    count = 1
-    user.ducks.each do |duck| 
-        DuckPhoto.create!(
-            duck: duck,
-            url: "https://picsum.photos/200/300?random=#{count}",
-            name: Faker::FunnyName.name
-        )
-        count += 1 
-    end
-end
+# url = "https://upload.wikimedia.org/wikipedia/commons/a/a1/Mallard2.jpg"
+# duck = Duck.last
+# picture = DuckPhoto.new(name: 'Cloudinary test', duck: duck)
+# picture.remote_photo_url = url
+# picture.save!
+
+
+# url = "https://www.ducks.ca/assets/2016/11/mallard-hen.jpg"
+# picture2 = DuckPhoto.new(name: 'Cloudinary test 2', duck: duck)
+# picture2.remote_photo_url = url
+# picture2.save!
+
+# users = User.all
+
+# users.each do |user|
+#     count = 1
+#     user.ducks.each do |duck|
+#         picture = DuckPhoto.new(
+#             duck: duck,
+#             name: Faker::FunnyName.name
+#         )
+#         picture.remote_url_url = "https://picsum.photos/200/300?random=#{count}"
+#         picture.save!
+#         count += 1
+#         picture = DuckPhoto.new(
+#             duck: duck,
+#             name: Faker::FunnyName.name
+#         )
+#         picture.remote_url_url = "https://picsum.photos/200/300?random=#{count}"
+#         picture.save!
+#         count += 1
+#     end
+# end
 
 
 # BOOKINGS SEEDS ==============================
 
 # get all users
-# for each users we get ducks 
-# we take 50% ducks 
+# for each users we get ducks
+# we take 50% ducks
 # for each of this ducks we create a booking
 # with randoms date
 
 
-# add bookings for 50% of ducks 
+# add bookings for 50% of ducks
 
 def create_rand_start_end_dates(duration)
     year = 2019
@@ -176,12 +201,14 @@ status = ['pending', 'refused', 'accepted']
 
 @bookings_counter = 0
 
+users = User.all
+
 users.each do |user|
 
-    size = ((user.ducks.size) / 2).round()
+    size = user.ducks.size
 
-    count = 0 
-    size.times do 
+    count = 0
+    size.times do
     dates = create_rand_start_end_dates((rand()*21 + 1).round)
         (rand()*5 + 1).round().times do
             Booking.create!(
@@ -191,19 +218,16 @@ users.each do |user|
                 end: dates[:end],
                 status: status[rand()*status.size]
             )
-            @bookings_counter += 1    
+            @bookings_counter += 1
         end
        count += 1
     end
 end
 
 
-
-
-
 # REVIEWS SEEDS ===============================
 
-bookings = Booking.all 
+bookings = Booking.all
 
 bookings.each do |booking|
     Review.create!(
@@ -212,8 +236,6 @@ bookings.each do |booking|
         stars: (rand()*5).round()
     )
 end
-
-
 
 # SEEDS TEST =================================
 

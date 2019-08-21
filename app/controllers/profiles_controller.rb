@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
+
   def show
-    @ducks = Duck.where(id: params[:id])
+    @user = User.find(params[:id])
   end
-  
+
 end

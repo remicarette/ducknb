@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1>Ducks#index</h1>
 <p>Find me in app/views/ducks/index.html.erb</p>
 <div class="container">
@@ -10,3 +11,34 @@
     <% end %>
   </ul>
 </div>
+=======
+<!-- TODO: refacto avec partials -->
+<% if params[:search].present? &&  @users == [] %>
+
+  <div class="alert alert-info center-block">
+    <strong>Sorry!</strong> No ducks found in <%= params[:search].downcase.capitalize %> :(
+  </div>
+
+<% else %>
+
+  <div class="container">
+    <% if params[:search].present? && @users != [] %>
+
+      <h2>Our best ducks in <%= params[:search] %></h2>
+
+    <% else %>
+
+      <h2>Our best ducks</h2>
+
+    <% end %>
+
+    <div class="cards">
+      <% @users.each do |user| %>
+        <%= render"shared/card", array: user.ducks %>
+      <% end %>
+    </div>
+
+  </div>
+
+<% end %>
+>>>>>>> 4a399f5041e9d444dfac3657e31c07b1b25bf9a1
