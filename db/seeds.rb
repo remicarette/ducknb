@@ -213,8 +213,6 @@ bookings.each do |booking|
     )
 end
 
-
-
 # SEEDS TEST =================================
 
 puts "Users created : #{User.count}/4"
