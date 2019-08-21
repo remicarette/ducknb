@@ -39,7 +39,7 @@ class DucksController < ApplicationController
 
   def destroy
     @duck.destroy
-    redirect_to ducks_url, notice: 'Deleted'
+    redirect_to ducks_path, notice: 'Deleted'
   end
 
   private

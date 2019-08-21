@@ -2,5 +2,11 @@
 <p>Find me in app/views/ducks/index.html.erb</p>
 <div class="container">
   <ul>
-    <% @duck
+    <% @ducks.each do |card| %>
+      <li data-duck-id="<%= duck.id %>"
+        <%= duck.name %>
+        <%= link_to "card" %>
+      </li>
+    <% end %>
+  </ul>
 </div>
