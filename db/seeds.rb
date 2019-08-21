@@ -298,7 +298,172 @@ create_duck(simon, "https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-ima
 #     )
 # end
 
+# sexs = ['Male', 'Female']
+# rand_i_races = (rand() * races.size - 1).round
+# rand_i_sexs = (rand() * sexs.size - 1).round
 
+# # create 4 ducks for user 1
+# 4.times do
+#     Duck.create!(
+#         birthdate: Date.new(),
+#         name: Faker::Creature::Animal.name,
+#         race: races[rand_i_races],
+#         sex: sexs[rand_i_sexs],
+#         colour: Faker::Color.color_name,
+#         weight: (rand() * 50 + 10).round,
+#         tags: "cool,funny,noisy,smiling",
+#         user: user1
+#     )
+# end
+
+# # create 2 ducks for user2
+# 2.times do
+#     Duck.create!(
+#         birthdate: Date.new(),
+#         name: Faker::Creature::Animal.name,
+#         race: races[rand_i_races],
+#         sex: sexs[rand_i_sexs],
+#         colour: Faker::Color.color_name,
+#         weight: (rand() * 50 + 10).round,
+#         tags: "cool,funny,noisy,smiling",
+#         user: user2
+#     )
+# end
+
+# # create 6 ducks for user3
+
+# 6.times do
+#     Duck.create!(
+#         birthdate: Date.new(),
+#         name: Faker::Creature::Animal.name,
+#         race: races[rand_i_races],
+#         sex: sexs[rand_i_sexs],
+#         colour: Faker::Color.color_name,
+#         weight: (rand() * 50 + 10).round,
+#         tags: "cool,funny,noisy,smiling",
+#         user: user3
+#     )
+# end
+
+# # create 10 ducks for user4
+
+# 10.times do
+#     d = Duck.new(
+#         birthdate: Date.new(),
+#         name: Faker::Creature::Animal.name,
+#         race: races[rand_i_races],
+#         sex: sexs[rand_i_sexs],
+#         colour: Faker::Color.color_name,
+#         weight: (rand() * 50 + 10).round,
+#         tags: "cool,funny,noisy,smiling",
+#         user: user4
+#     )
+
+#     d.remote_photo_url = "https://picsum.photos/200/300"
+#     d.save!
+# end
+
+
+# SEEDS DUCKS PHOTOS =========================================
+
+# get all users to get all ducks
+# for each duck, we create a new duckphoto
+
+# CLOUDINARY SEED
+
+# url = "https://upload.wikimedia.org/wikipedia/commons/a/a1/Mallard2.jpg"
+# duck = Duck.last
+# picture = DuckPhoto.new(name: 'Cloudinary test', duck: duck)
+# picture.remote_photo_url = url
+# picture.save!
+
+
+# url = "https://www.ducks.ca/assets/2016/11/mallard-hen.jpg"
+# picture2 = DuckPhoto.new(name: 'Cloudinary test 2', duck: duck)
+# picture2.remote_photo_url = url
+# picture2.save!
+
+# users = User.all
+
+# users.each do |user|
+#     count = 1
+#     user.ducks.each do |duck|
+#         picture = DuckPhoto.new(
+#             duck: duck,
+#             name: Faker::FunnyName.name
+#         )
+#         picture.remote_url_url = "https://picsum.photos/200/300?random=#{count}"
+#         picture.save!
+#         count += 1
+#         picture = DuckPhoto.new(
+#             duck: duck,
+#             name: Faker::FunnyName.name
+#         )
+#         picture.remote_url_url = "https://picsum.photos/200/300?random=#{count}"
+#         picture.save!
+#         count += 1
+#     end
+# end
+
+
+# BOOKINGS SEEDS ==============================
+
+# get all users
+# for each users we get ducks
+# we take 50% ducks
+# for each of this ducks we create a booking
+# with randoms date
+
+
+# add bookings for 50% of ducks
+
+def create_rand_start_end_dates(duration)
+    year = 2019
+    month = (rand() * 11 + 1).round
+    day = (rand() * 27 + 1).round
+    date = Date.parse("#{year}-#{month}-#{day}")
+    dates = { start: date, end: date+duration }
+end
+
+status = ['pending', 'refused', 'accepted']
+
+@bookings_counter = 0
+
+users = User.all
+
+users.each do |user|
+
+    size = user.ducks.size
+
+    count = 0
+    size.times do
+    dates = create_rand_start_end_dates((rand()*21 + 1).round)
+        (rand()*5 + 1).round().times do
+            Booking.create!(
+                user: user,
+                duck: user.ducks[count],
+                start: dates[:start],
+                end: dates[:end],
+                status: status[rand()*status.size]
+            )
+            @bookings_counter += 1
+        end
+       count += 1
+    end
+end
+
+
+# REVIEWS SEEDS ===============================
+
+bookings = Booking.all
+
+bookings.each do |booking|
+    Review.create!(
+        booking: booking,
+        content: Faker::Lorem.sentences(number: 1),
+        stars: (rand()*5).round()
+    )
+end
 
 # SEEDS TEST =================================
 
