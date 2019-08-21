@@ -1,6 +1,6 @@
 class DucksController < ApplicationController
 
-  before_action :set_duck, only: [:show, :edit]
+  before_action :set_duck, only: [:show, :edit, :update]
   def index
     @ducks = Duck.all
   end
@@ -29,8 +29,8 @@ class DucksController < ApplicationController
   end
 
   def update
-    if @duck.update(article_params)
-      redirect_to @article, notice: 'The update was done.'
+    if @duck.update(duck_params)
+      redirect_to @duck, notice: 'The update was done.'
     else
       render :edit
     end
