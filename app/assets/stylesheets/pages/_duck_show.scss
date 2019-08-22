@@ -3,11 +3,29 @@
   text-shadow: rgba(0,0,0,0.5);
 }
 
+.container-show-duck {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.form-new-booking {
+  position: sticky;
+  top: 0;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 80%;
+  justify-content: center;
+}
+
+.all-reviews {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .card-review {
   background-size: cover;
   background-position: center;
-  height: 180px;
-  width: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,6 +34,7 @@
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   position: relative;
+  margin-bottom: 10px;
 }
 
 .card-review .review-stars {
