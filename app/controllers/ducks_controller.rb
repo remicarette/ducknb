@@ -4,8 +4,8 @@ class DucksController < ApplicationController
 
   def index
     @ducks = []
-    if params[:search].present?
-      @users = User.where(city: params[:search].downcase.capitalize)
+    if params[:city].present?
+      @users = User.where(city: params[:city].downcase.capitalize)
     else
       @users = User.all
     end

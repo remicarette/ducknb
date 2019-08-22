@@ -7,27 +7,33 @@
 
 
 
-      <%= simple_form_for :search, method: :get do |f| %>
+      <%= simple_form_for "", url: ducks_path, method: :get do |f| %>
         <div class="form-inline home-form">
-          <%= f.input :search,
+          <%= f.input :city,
                       as: :string,
                       required: false,
                       label: false,
                       placeholder: "Lille",
-                      input_html: {class: " form-control"} %>
-          <%= f.input :starts_at,
+                      input_html: {class: " form-control input-text-blue-duck"} %>
+          <%= f.input :start,
                       as: :string,
                       required: false,
                       label: false,
                       placeholder: "01/01/2019",
-                      input_html: {class: "datepicker form-control"} %>
+                      input_html: {
+                        id: "range_start",
+                        class: "datepicker form-control input-w200px text-center input-text-blue-duck"
+                        } %>
 
-          <%= f.input :ends_at,
+          <%= f.input :end,
                       as: :string,
                       required: false,
                       label: false,
                       placeholder: "08/01/2019",
-                      input_html: {class: "datepicker form-control"} %>
+                      input_html: {
+                        id: "range_end",
+                        class: "datepicker form-control input-w200px text-center input-text-blue-duck d-none"
+                      } %>
 
           <%= submit_tag "Search", name: nil, class: "btn btn-flat-blue" %>
           <%= link_to "Rent your duck", new_duck_path, class: "btn btn-flat" %>
