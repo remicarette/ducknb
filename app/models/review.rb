@@ -4,4 +4,6 @@ class Review < ApplicationRecord
   validates :content, presence: true
   validates :stars, presence: true
   validates :booking, presence: true
+
+
 end
