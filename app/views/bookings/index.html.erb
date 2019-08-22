@@ -1,17 +1,82 @@
 <div class="container">
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="pills-my-ducks-tab" data-toggle="pill" href="#pills-my-ducks" role="tab" aria-controls="pills-my-ducks" aria-selected="true">confirm</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-pending-tab" data-toggle="pill" href="#pills-pending" role="tab" aria-controls="pills-pending" aria-selected="false">pending</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-accepted-tab" data-toggle="pill" href="#pills-accepted" role="tab" aria-controls="pills-accepted" aria-selected="false">accepted</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-refused-tab" data-toggle="pill" href="#pills-refused" role="tab" aria-controls="pills-refused" aria-selected="false">refused</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-my-ducks" role="tabpanel" aria-labelledby="pills-home-tab">
+      <%@my_ducks_bookings.each do |booking|%>
+        <%= link_to booking_path(booking), class: "text-decoration-none" do %>
+          <div class="card-booking">
+            <%= cl_image_tag(booking.duck.photo,
+            width: 150, height: 150, crop: :thumb, gravity: :face) %>
+          <div class="card-booking-infos">
+            <h2> <%= booking.user.first_name%> wants <%= booking.duck.name%></h2>
+            <p>From <%= booking.start%> Until <%= booking.end%></p>
+            <%= link_to "Accept", booking_accepted_path(booking), method: :patch, class: "btn btn-success"%>
+            <%= link_to "Refuse", booking_refused_path(booking), method: :patch, class: "btn btn-success"%>
 
-    <%@bookings.each do |booking|%>
-    <%= link_to booking_path(booking), class: "text-decoration-none" do %>
-      <div class="card-booking">
-        <%= cl_image_tag(booking.duck.photo,
-        width: 150, height: 150, crop: :thumb, gravity: :face) %>
-      <div class="card-booking-infos">
-        <h2>You want <%= booking.duck.name%></h2>
-        <p>From <%= booking.start%> Until <%= booking.end%></p>
-        <div class=<%= booking.status%>> <%= booking.status%> </div>
-      </div>
-      </div>
-    <%end%>
-    <%end%>
+          </div>
+          </div>
+        <%end%>
+      <%end%>
+    </div>
+    <div class="tab-pane fade" id="pills-pending" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <%@pending.each do |booking|%>
+        <%= link_to booking_path(booking), class: "text-decoration-none" do %>
+          <div class="card-booking">
+            <%= cl_image_tag(booking.duck.photo,
+            width: 150, height: 150, crop: :thumb, gravity: :face) %>
+          <div class="card-booking-infos">
+            <h2>You want <%= booking.duck.name%></h2>
+            <p>From <%= booking.start%> Until <%= booking.end%></p>
+            <div class=<%= booking.status%>> <%= booking.status%> </div>
+          </div>
+          </div>
+        <%end%>
+      <%end%>
+    </div>
+    <div class="tab-pane fade" id="pills-accepted" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <%@accepted.each do |booking|%>
+        <%= link_to booking_path(booking), class: "text-decoration-none" do %>
+          <div class="card-booking">
+            <%= cl_image_tag(booking.duck.photo,
+            width: 150, height: 150, crop: :thumb, gravity: :face) %>
+          <div class="card-booking-infos">
+            <h2>You want <%= booking.duck.name%></h2>
+            <p>From <%= booking.start%> Until <%= booking.end%></p>
+            <div class=<%= booking.status%>> <%= booking.status%> </div>
+          </div>
+          </div>
+        <%end%>
+      <%end%>
+    </div>
+    <div class="tab-pane fade" id="pills-refused" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <%@refused.each do |booking|%>
+        <%= link_to booking_path(booking), class: "text-decoration-none" do %>
+          <div class="card-booking">
+            <%= cl_image_tag(booking.duck.photo,
+            width: 150, height: 150, crop: :thumb, gravity: :face) %>
+          <div class="card-booking-infos">
+            <h2>You want <%= booking.duck.name%></h2>
+            <p>From <%= booking.start%> Until <%= booking.end%></p>
+            <div class=<%= booking.status%>> <%= booking.status%> </div>
+          </div>
+          </div>
+        <%end%>
+      <%end%>
+    </div>
+  </div>
 
+  <br>
 </div>

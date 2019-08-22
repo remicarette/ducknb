@@ -172,5 +172,3 @@ puts " ------------------ #{Review.count} REVIEWS CREATED --------------- "
 # puts "Ducks photos created : #{simon.duck_photos.size}/4"
 # puts "Bookings : #{simon.bookings.size}"
 # puts "Ducks reviews : #{simon.reviews.size}"
-
-

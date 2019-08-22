@@ -16,4 +16,16 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :zip_code, presence: true
   validates :city, presence: true
+
+  def ducks_bookings
+    array = []
+    p "------------"
+    p self.ducks
+    self.ducks.each do |duck|
+      duck.bookings.each do |booking|
+        array << booking if booking.status == "pending" && booking.user != self
+      end
+    end
+    return array
+  end
 end
