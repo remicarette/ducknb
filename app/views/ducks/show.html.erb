@@ -80,9 +80,13 @@
     </table>
   </div>
 
+  <!-- DISPLAY BOOKING FORM -->
 
-
-
+  <%= simple_form_for [@duck, @booking] do |f| %>
+  <%= f.input :start%>
+  <%= f.input :end%>
+  <%= f.button :submit %>
+  <%end%>
 
 
   <!-- DISPLAY ALL REVIEWS -->
@@ -131,3 +135,4 @@
     <p>...</p>
   </div>
 </div>
+<% console%>
