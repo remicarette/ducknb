@@ -12,6 +12,9 @@ class Duck < ApplicationRecord
   validates :colour, presence: true
   validates :weight, presence: true
   validates :tags, presence: true
+  validates :price, presence: true
+
+  mount_uploader :photo, PhotoUploader
 
   def rating_average
     average = reviews.sum(&:stars).fdiv(reviews.count)

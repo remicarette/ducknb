@@ -1,4 +1,31 @@
+
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1525538182201-02cd1909effb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80);">
+  <div class="container">
+    <h1>Ducknb</h1>
+    <p>Find your best duck for a week</p>
+    <%= form_tag ducks_path, method: :get, class:'home-form form-inline', enforce_utf8: false do %>
+      <%= text_field_tag :search,
+        params[:query],
+        class: "form-control",
+        placeholder: "City"
+      %>
+      <%=date_field_tag :begin,
+      params[:query],
+      class: "form-control"
+      %>
+      <%=date_field_tag :end,
+      params[:query],
+      class: "form-control"
+      %>
+      <%= submit_tag "Search", name: nil, class: "btn btn-flat-blue" %>
+      <%= link_to "Rent your duck", new_duck_path, class: "btn btn-flat" %>
+    <% end %>
+  </div>
+</div>
+
 <div class="container">
+
   <h3>Ducks of the moment !</h3>
   <div class="cards">
     <%= render"shared/card", array: @ducks_of_the_moment%>
