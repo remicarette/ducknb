@@ -15,26 +15,30 @@
 .btn-flat {
   color: white;
   padding: 8px 24px;
-  border-radius: 4px;
-  background: #1EDD88;
+  border-radius: 8px;
+  background: #387d40;
   transition: background 0.3s ease;
+  box-shadow: 0px 10px 10px, rgba(0,0,0,1);
+  font-size: 18px;
 }
 .btn-flat-blue{
   color: white;
   padding: 8px 24px;
-  border-radius: 4px;
-  background: linear-gradient(#147EFF, #0F67DA);
+  border-radius: 8px;
+  background: #368896;
   transition: background 0.3s ease;
   margin-right: 10px;
+  font-size: 18px;
 }
 
 .btn-flat-blue:hover {
-  background: linear-gradient(#167FFB, #0F60C4);
+  background: #2B748C;
+  opacity: 1;
   color: white;
 }
 
 .btn-flat:hover {
-  background: #1BCB7F;
+  background: black;
   color: white;
 }
 
