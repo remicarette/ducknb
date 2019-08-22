@@ -38,8 +38,10 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
-    @booking.duck = Duck.find(params[:id])
-    if booking.save!
+    @booking.status = "pending"
+    @booking.duck = Duck.find(params[:duck_id])
+
+    if @booking.save!
       redirect_to bookings_path
     else
   end
