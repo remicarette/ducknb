@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @duck = Duck.find(params[:id])
     @review.duck = @duck
-    if @review.save
+    if @review.save!
       redirect_to duck_path(@duck)
     else
       @review = Review.new
