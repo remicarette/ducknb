@@ -13,6 +13,8 @@ class Duck < ApplicationRecord
   validates :weight, presence: true
   validates :tags, presence: true
 
+  mount_uploader :photo, PhotoUploader
+
   def rating_average
     average = reviews.sum(&:stars).fdiv(reviews.count)
     if average.nan?
