@@ -80,41 +80,53 @@
     </table>
   </div>
 
+  <!-- DISPLAY BOOKING FORM -->
 
-
-
+  <%= simple_form_for [@duck, @booking] do |f| %>
+  <%= f.input :start%>
+  <%= f.input :end%>
+  <%= f.button :submit %>
+  <%end%>
 
 
   <!-- DISPLAY ALL REVIEWS -->
-  <ul>
-    <%full_stars = "<i class='fas fa-star'></i>"%>
-    <%empty_stars = "<i class='far fa-star'></i>"%>
+
+  <%full_stars = "<i class='fas fa-star'></i>"%>
+  <%empty_stars = "<i class='far fa-star'></i>"%>
+  <div class= container>
     <% @duck.reviews.each do |review| %>
-    <li>
-
-      <% full = review.stars.to_i %>
-      <% empty = (5 - full).to_i %>
-
-      <%= review.content %>
-      <div class="stars">
-      <%full.times do %>
-        <%= full_stars.html_safe %>
-      <%end%>
-      <%empty.times do %>
-        <%= empty_stars.html_safe %>
-      <%end%>
-    </div>
-
-      <%= link_to "Edit Review", edit_review_path(review) %>
-      <%= link_to review_path(review), method: :delete, data: { confirm: "Are you sure?" } do %>
-        <i class="fa fa-trash destroy_dose"></i>
-      <% end %>
-    </li>
-  <% end %>
-  </ul>
+      <div class="card-review" style="width:50%;max-width:400px">
+        <% full = review.stars.to_i %>
+        <% empty = (5 - full).to_i %>
+        <div class="review-content">
+          <%= review.content %>
+        </div>
+        <div class="review-stars">
+          <%full.times do %>
+            <%= full_stars.html_safe %>
+          <%end%>
+          <%empty.times do %>
+            <%= empty_stars.html_safe %>
+          <%end%>
+        </div>
+        <div class="review-info">
+          <% upd = review.updated_at.to_date %>
+          Created: <%= review.created_at.to_date %>
+          <% unless upd.nil? %>
+            <br> <i> Edited: <%= review.updated_at.to_date %> </i>
+          <% end %>
+        </div>
+        <br>
+        <div class= "review-update-edit">
+          <%= link_to "Edit Review", edit_review_path(review) %>
+          <%= link_to review_path(review), method: :delete, data: { confirm: "Are you sure?" } do %>
+            <i class="fa fa-trash destroy_dose"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-
 
 <div class="carousel-item">
   <img src="..." alt="...">
@@ -123,3 +135,4 @@
     <p>...</p>
   </div>
 </div>
+<% console%>
