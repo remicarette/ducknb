@@ -4,23 +4,35 @@
   <div class="container">
     <h1>Ducknb</h1>
     <p>Find your best duck for a week</p>
-    <%= form_tag ducks_path, method: :get, class:'home-form form-inline', enforce_utf8: false do %>
-      <%= text_field_tag :search,
-        params[:query],
-        class: "form-control",
-        placeholder: "City"
-      %>
-      <%=date_field_tag :begin,
-      params[:query],
-      class: "form-control"
-      %>
-      <%=date_field_tag :end,
-      params[:query],
-      class: "form-control"
-      %>
-      <%= submit_tag "Search", name: nil, class: "btn btn-flat-blue" %>
-      <%= link_to "Rent your duck", new_duck_path, class: "btn btn-flat" %>
-    <% end %>
+
+
+
+      <%= simple_form_for :search, method: :get do |f| %>
+        <div class="form-inline home-form">
+          <%= f.input :search,
+                      as: :string,
+                      required: false,
+                      label: false,
+                      placeholder: "Lille",
+                      input_html: {class: " form-control"} %>
+          <%= f.input :starts_at,
+                      as: :string,
+                      required: false,
+                      label: false,
+                      placeholder: "01/01/2019",
+                      input_html: {class: "datepicker form-control"} %>
+
+          <%= f.input :ends_at,
+                      as: :string,
+                      required: false,
+                      label: false,
+                      placeholder: "08/01/2019",
+                      input_html: {class: "datepicker form-control"} %>
+
+          <%= submit_tag "Search", name: nil, class: "btn btn-flat-blue" %>
+          <%= link_to "Rent your duck", new_duck_path, class: "btn btn-flat" %>
+        </div>
+      <% end %>
   </div>
 </div>
 
@@ -30,17 +42,3 @@
     <%= render"shared/card", array: @ducks_of_the_moment%>
   </div>
 </div>
-
-<div class="container">
-  <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
-    <h2>Flatpickr Demo</h2>
-
-    <%= simple_form_for :search, method: "get" do |f| %>
-      <%= f.input :starts_at, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.input :ends_at, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.button :submit, "Go", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-</div>
-
-
