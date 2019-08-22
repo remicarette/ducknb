@@ -1,23 +1,33 @@
 <div class="container">
-  <div>
-    <div class="d-flex align-items-center">
-      <span class ="navbar-brand">
+    <div class="d-flex align-items-center justify-content-center">
       <ul class="nav">
-        <li class="nav-item">< Confirm></li>
+        <li class="nav-item">
+          <a class="nav-link text-primary" href="#" >Confirm |</a>
+        <li class="nav-item">
+          <a class="nav-link text-warning" href="#">Pending |</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-success" href="#">Accepted |</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-danger" href="#">Refused</a>
+        </li>
       </ul>
     </div>
-    <%@bookings.each do |booking|%>
-      <%= link_to booking_path(booking), class: "text-decoration-none" do %>
-      <div class="card-booking">
-        <%= cl_image_tag(booking.duck.photo,
-        width: 150, height: 150, crop: :thumb, gravity: :face) %>
-        <div class="card-booking-infos">
-          <h2>You want <%= booking.duck.name%></h2>
-          <p>From <%= booking.start%> Until <%= booking.end%></p>
-          <div class=<%= booking.status%>> <%= booking.status%> </div>
+    <div class="card-deck p-3 mr-3">
+      <%@bookings.each do |booking|%>
+        <%= link_to booking_path(booking), class: "text-decoration-none" do %>
+        <div class="card-booking">
+          <%= cl_image_tag(booking.duck.photo,
+          width: 150, height: 150, crop: :thumb, gravity: :face) %>
+          <div class="card-booking-infos">
+            <h2>You want <%= booking.duck.name%></h2>
+            <p>belongs to<%= booking.user.first_name %></p>
+            <p>From <%= booking.start%> Until <%= booking.end%></p>
+            <div class=<%= booking.status%>> <%= booking.status%> </div>
+          </div>
         </div>
-      </div>
+        <%end%>
       <%end%>
-    <%end%>
     </div>
 </div>
