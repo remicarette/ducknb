@@ -19,9 +19,7 @@
     <% end %>
 
     <div class="cards">
-      <% @users.each do |user| %>
-        <%= render"shared/card", array: user.ducks %>
-      <% end %>
+        <%= render"shared/card", array: @ducks %>
     </div>
 
   </div>
