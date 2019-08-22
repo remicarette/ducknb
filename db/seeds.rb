@@ -141,9 +141,7 @@ end
 # get all users to get all ducks
 # for each duck, we create a new duckphoto
 
-# CLOUDINARY SEED
-
-# url = "https://upload.wikimedia.org/wikipedia/commons/a/a1/Mallard2.jpg"
+# CLOUDINARY SEED = "https://upload.wikimedia.org/wikipedia/commons/a/a1/Mallard2.jpg"
 # duck = Duck.last
 # picture = DuckPhoto.new(name: 'Cloudinary test', duck: duck)
 # picture.remote_photo_url = url

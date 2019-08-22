@@ -1,6 +1,5 @@
 <div class="container">
-
-    <%@bookings.each do |booking|%>
+  <%@my_bookings.each do |booking|%>
     <%= link_to booking_path(booking), class: "text-decoration-none" do %>
       <div class="card-booking">
         <%= cl_image_tag(booking.duck.photo,
@@ -12,6 +11,8 @@
       </div>
       </div>
     <%end%>
-    <%end%>
-
+  <%end%>
+  <%= current_user.inspect %>
+  <br>
+  <%= @my_ducks_bookings.inspect %>
 </div>

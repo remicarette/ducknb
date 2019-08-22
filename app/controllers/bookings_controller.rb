@@ -1,7 +1,8 @@
 class BookingsController < ApplicationController
   def index
     user = current_user
-    @bookings = Booking.where(user_id: user.id).order(status: :desc)
+    @my_bookings = Booking.where(user: user).order(status: :desc)
+    @my_ducks_bookings = current_user.ducks_bookings
   end
 
   def show
