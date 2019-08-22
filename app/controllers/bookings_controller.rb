@@ -37,7 +37,7 @@ class BookingsController < ApplicationController
 
   def create
     duck = Duck.find(params[:duck_id])
-    if duck.bookable?(params[:start], params[:end])
+    if duck.bookable?(params[:booking][:start], params[:booking][:end])
       @booking = Booking.new(booking_params)
       @booking.user = current_user
       @booking.status = "pending"
@@ -45,7 +45,7 @@ class BookingsController < ApplicationController
       @booking.save!
       redirect_to bookings_path
     else
-      redirect_to duck_path(duck)
+      redirect_to duck_path(duck), alert: "This duck is already booked"
     end
   end
 
