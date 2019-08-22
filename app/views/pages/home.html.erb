@@ -6,37 +6,41 @@
     <p>Find your best duck for a week</p>
 
 
-
       <%= simple_form_for "", url: ducks_path, method: :get do |f| %>
         <div class="form-inline home-form">
-          <%= f.input :city,
-                      as: :string,
-                      required: false,
-                      label: false,
-                      placeholder: "Lille",
-                      input_html: {class: " form-control input-text-blue-duck"} %>
-          <%= f.input :start,
-                      as: :string,
-                      required: false,
-                      label: false,
-                      placeholder: "01/01/2019",
-                      input_html: {
-                        id: "range_start",
-                        class: "datepicker form-control input-w200px text-center input-text-blue-duck"
+          <div class="row">
+            <div class="col-12  col-sm-12 col-md-6 d-flex">
+              <%= f.input :city,
+                          as: :string,
+                          required: false,
+                          label: false,
+                          placeholder: "Lille",
+                          input_html: {class: " form-control input-w200px input-text-blue-duck"} %>
+              <%= f.input :start,
+                          as: :string,
+                          required: false,
+                          label: false,
+                          placeholder: "22/08/2019",
+                          input_html: {
+                            id: "range_start",
+                            class: "datepicker form-control input-w200px text-center input-text-blue-duck"
+                            } %>
+              <%= f.input :end,
+                        as: :string,
+                        required: false,
+                        label: false,
+                        placeholder: "08/01/2019",
+                        input_html: {
+                          id: "range_end",
+                          class: "datepicker form-control input-w200px text-center input-text-blue-duck d-none"
                         } %>
+            </div>
 
-          <%= f.input :end,
-                      as: :string,
-                      required: false,
-                      label: false,
-                      placeholder: "08/01/2019",
-                      input_html: {
-                        id: "range_end",
-                        class: "datepicker form-control input-w200px text-center input-text-blue-duck d-none"
-                      } %>
-
-          <%= submit_tag "Search", name: nil, class: "btn btn-flat-blue" %>
-          <%= link_to "Rent your duck", new_duck_path, class: "btn btn-flat" %>
+            <div class="col-12 col-sm-12 col-md-6">
+              <%= submit_tag "Search", name: nil, class: "btn btn-flat-blue" %>
+              <%= link_to "Rent your duck", new_duck_path, class: "btn btn-flat" %>
+            </div>
+          </div>
         </div>
       <% end %>
   </div>
