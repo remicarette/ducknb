@@ -2,3 +2,43 @@
 .carousel-caption {
   text-shadow: rgba(0,0,0,0.5);
 }
+
+.card-review {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.card-review .review-stars {
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  font-size: 12px;
+}
+
+.card-review .review-info {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 12px;
+}
+
+.card-review .review-content {
+  position: absolute;
+  font-size: 24px;
+}
+
+.card-review .review-update-edit {
+  position: absolute;
+  bottom: 5px;
+  font-size: 12px;
+
+}

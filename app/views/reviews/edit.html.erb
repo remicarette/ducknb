@@ -2,12 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <h1>Update your review for <%= @review.booking.duck.name %></h1>
-
-      <%= simple_form_for @review do |f| %>
-        <%= f.input :content %>
-        <%= f.input :stars %>
-        <%= f.button :submit, class: 'btn btn-primary' %>
-      <% end %>
+        <%= render"shared/formreview" %>
     </div>
   </div>
 </div>
