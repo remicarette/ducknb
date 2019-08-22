@@ -82,12 +82,32 @@
 
   <!-- DISPLAY BOOKING FORM -->
 
-  <%= simple_form_for [@duck, @booking] do |f| %>
-  <%= f.input :start%>
-  <%= f.input :end%>
-  <%= f.button :submit %>
-  <%end%>
+  <div class="book-form">
+    <h3>Book <%= @duck.name %> now !</h3>
+    <%= simple_form_for [@duck, @booking] do |f| %>
+      <%= f.label :start, 'Date de réservation' %>
+      <%= f.input :start,
+                  as: :string,
+                  required: false,
+                  label: false,
+                  placeholder: "01/01/2019",
+                  input_html: {
+                    id: "range_start",
+                    class: "datepicker form-control text-center input-text-blue-duck"
+                    } %>
+      <%= f.input :end,
+                      as: :string,
+                      required: false,
+                      label: false,
+                      placeholder: "08/01/2019",
+                      input_html: {
+                        id: "range_end",
+                        class: "datepicker form-control text-center input-text-blue-duck d-none"
+                      } %>
 
+      <%= submit_tag "Book", name: nil, class: "btn btn-flat-blue" %>
+    <% end %>
+  </div>
 
   <!-- DISPLAY ALL REVIEWS -->
 
@@ -135,4 +155,3 @@
     <p>...</p>
   </div>
 </div>
-<% console%>
