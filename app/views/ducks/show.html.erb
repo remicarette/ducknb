@@ -1,158 +1,161 @@
 <div class="container">
-
+  <div class = "row">
+    <div class = 'col-12'>
   <!-- CAROUSSEL -->
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <% (@duck.duck_photos.drop(1)).size.times do %>
-        <li data-target="#carouselExampleIndicators" data-slide-to="<%= @carousel_counter %>"></li>
-        <% @carousel_counter += 1 %>
-      <% end %>
-    </ol>
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <% (@duck.duck_photos.drop(1)).size.times do %>
+            <li data-target="#carouselExampleIndicators" data-slide-to="<%= @carousel_counter %>"></li>
+            <% @carousel_counter += 1 %>
+          <% end %>
+        </ol>
 
-    <div class="carousel-inner">
-        <div class="carousel-item active" style="max-height:400px;">
-            <%= cl_image_tag(@duck.photo,
-                width: 800, height: 400, crop: :fill, class: "d-block w-100") %>
-          <div class="carousel-caption d-none d-md-block">
-            <h5><%= @duck.name %></h5>
-            <p>Your lovely duck</p>
-          </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="max-height:400px;">
+                <%= cl_image_tag(@duck.photo,
+                    width: 800, height: 400, crop: :fill, class: "d-block w-100") %>
+              <div class="carousel-caption d-none d-md-block">
+                <h5><%= @duck.name %></h5>
+                <p>Your lovely duck</p>
+              </div>
+            </div>
+          <% @duck.duck_photos.drop(1).each do |picture| %>
+            <div class="carousel-item" style="max-height:400px;">
+              <%= cl_image_tag(picture.url,
+                    width: 800, height: 400, crop: :fill, class: "d-block w-100") %>
+              <div class="carousel-caption d-none d-md-block">
+                <h5><%= @duck.name %></h5>
+                <p>Your lovely duck</p>
+              </div>
+
+            </div>
+          <% end %>
         </div>
-      <% @duck.duck_photos.drop(1).each do |picture| %>
-        <div class="carousel-item" style="max-height:400px;">
-          <%= cl_image_tag(picture.url,
-                width: 800, height: 400, crop: :fill, class: "d-block w-100") %>
-          <div class="carousel-caption d-none d-md-block">
-            <h5><%= @duck.name %></h5>
-            <p>Your lovely duck</p>
-          </div>
 
-        </div>
-      <% end %>
-    </div>
-
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
 
   <!-- SHOW INFO ON THE DUCK  -->
 
-  <div class="d-flex justify-content-around">
-    <table>
-      <tr>
-        <td>Birthdate :</td>
-        <td><%= @duck.birthdate %></td>
-      </tr>
-      <tr>
-        <td>Race :</td>
-        <td><%= @duck.race %></td>
-      </tr>
-      <tr>
-        <td>Sex :</td>
-        <td><%= @duck.sex %></td>
-      </tr>
-    </table>
+      <div class="d-flex justify-content-around">
+        <table>
+          <tr>
+            <td>Birthdate :</td>
+            <td><%= @duck.birthdate %></td>
+          </tr>
+          <tr>
+            <td>Race :</td>
+            <td><%= @duck.race %></td>
+          </tr>
+          <tr>
+            <td>Sex :</td>
+            <td><%= @duck.sex %></td>
+          </tr>
+        </table>
 
-    <table>
-      <tr>
-        <td>Colour :</td>
-        <td><%= @duck.colour %></td>
-      </tr>
-      <tr>
-        <td>Weight :</td>
-        <td><%= @duck.weight %></td>
-      </tr>
-      <tr>
-        <td>Tags :</td>
-        <td><%= @duck.tags %></td>
-      </tr>
-      <tr>
-        <td>Price  :</td>
-        <td><%= @duck.price.round(2) %> €</td>
-      </tr>
-    </table>
-  </div>
+        <table>
+          <tr>
+            <td>Colour :</td>
+            <td><%= @duck.colour %></td>
+          </tr>
+          <tr>
+            <td>Weight :</td>
+            <td><%= @duck.weight %></td>
+          </tr>
+          <tr>
+            <td>Tags :</td>
+            <td><%= @duck.tags %></td>
+          </tr>
+          <tr>
+            <td>Price  :</td>
+            <td><%= @duck.price.round(2) %> €</td>
+          </tr>
+        </table>
+      </div>
 
+    </div>
   <!-- DISPLAY BOOKING FORM -->
 
 
-  <div class="book-form">
-    <h3>Book <%= @duck.name %> now !</h3>
-    <%= simple_form_for [@duck, @booking] do |f| %>
-      <%= f.label :start, 'Date de réservation' %>
-      <%= f.input :start,
-                  as: :string,
-                  required: false,
-                  label: false,
-                  placeholder: "01/01/2019",
-                  input_html: {
-                    id: "range_start",
-                    class: "datepicker form-control text-center input-text-blue-duck"
-                    } %>
-      <%= f.input :end,
-                      as: :string,
-                      required: false,
-                      label: false,
-                      placeholder: "08/01/2019",
-                      input_html: {
-                        id: "range_end",
-                        class: "datepicker form-control text-center input-text-blue-duck d-none"
-                      } %>
-
-      <%= submit_tag "Book", name: nil, class: "btn btn-flat-blue" %>
-    <% end %>
-  </div>
 
 
   <!-- DISPLAY ALL REVIEWS -->
-
   <%full_stars = "<i class='fas fa-star'></i>"%>
   <%empty_stars = "<i class='far fa-star'></i>"%>
-  <div class = "container-show-duck">
 
-    <div class = "all-reviews">
-      <% @duck.reviews.each do |review| %>
-        <div class="card-review">
-          <% full = review.stars.to_i %>
-          <% empty = (5 - full).to_i %>
-          <div class="review-content">
-            <%= review.content %>
+
+    <div class = 'col-6'>
+      <div class = "all-reviews">
+        <% @duck.reviews.each do |review| %>
+          <div class="card-review">
+            <% full = review.stars.to_i %>
+            <% empty = (5 - full).to_i %>
+            <div class="review-content">
+              <%= review.content %>
+            </div>
+            <div class="review-stars">
+              <%full.times do %>
+                <%= full_stars.html_safe %>
+              <%end%>
+              <%empty.times do %>
+                <%= empty_stars.html_safe %>
+              <%end%>
+            </div>
+            <div class="review-info">
+              <% upd = review.updated_at.to_date %>
+              Created: <%= review.created_at.to_date %>
+              <% unless upd.nil? %>
+                <br> <i> Edited: <%= review.updated_at.to_date %> </i>
+              <% end %>
+            </div>
+            <br>
+            <div class= "review-update-edit">
+              <%= link_to "Edit Review", edit_review_path(review) %>
+              <%= link_to review_path(review), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <i class="fa fa-trash destroy_dose"></i>
+              <% end %>s
+            </div>
           </div>
-          <div class="review-stars">
-            <%full.times do %>
-              <%= full_stars.html_safe %>
-            <%end%>
-            <%empty.times do %>
-              <%= empty_stars.html_safe %>
-            <%end%>
-          </div>
-          <div class="review-info">
-            <% upd = review.updated_at.to_date %>
-            Created: <%= review.created_at.to_date %>
-            <% unless upd.nil? %>
-              <br> <i> Edited: <%= review.updated_at.to_date %> </i>
-            <% end %>
-          </div>
-          <br>
-          <div class= "review-update-edit">
-            <%= link_to "Edit Review", edit_review_path(review) %>
-            <%= link_to review_path(review), method: :delete, data: { confirm: "Are you sure?" } do %>
-              <i class="fa fa-trash destroy_dose"></i>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
 
+    <div class = "col-6 position-sticky">
+      <div class="book-form">
+        <h3>Book <%= @duck.name %> now !</h3>
+        <%= simple_form_for [@duck, @booking] do |f| %>
+          <%= f.label :start, 'Date de réservation' %>
+          <%= f.input :start,
+                      as: :string,
+                      required: false,
+                      label: false,
+                      placeholder: "01/01/2019",
+                      input_html: {
+                        id: "range_start",
+                        class: "datepicker form-control text-center input-text-blue-duck"
+                        } %>
+          <%= f.input :end,
+                          as: :string,
+                          required: false,
+                          label: false,
+                          placeholder: "08/01/2019",
+                          input_html: {
+                            id: "range_end",
+                            class: "datepicker form-control text-center input-text-blue-duck d-none"
+                          } %>
 
-
+          <%= submit_tag "Book", name: nil, class: "btn btn-flat-blue" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
