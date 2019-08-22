@@ -11,20 +11,31 @@
     <div class="avatar">
       <%= image_tag(duck.user.photo)%>
     </div>
-    <div class="stars">
-      <p> <%= duck.nb_reviews.to_s + " review(s)"%></p>
-      <%duck.show_stars[0].times do %>
-        <%= full_stars.html_safe %>
-      <%end%>
-      <%duck.show_stars[1].times do %>
-        <%= half_stars.html_safe %>
-      <%end%>
-      <%duck.show_stars[2].times do %>
-        <%= empty_stars.html_safe %>
-      <%end%>
+    <div class="reviews">
+      <div class="text-center">
+        <%= duck.nb_reviews.to_s + " reviews"%>
+      </div>
+
+      <div class="stars">
+        <% duck.show_stars[0].times do %>
+          <%= full_stars.html_safe %>
+        <% end %>
+        <% duck.show_stars[1].times do %>
+          <%= half_stars.html_safe %>
+        <% end %>
+        <% duck.show_stars[2].times do %>
+          <%= empty_stars.html_safe %>
+        <% end %>
+
+      </div>
     </div>
     <div class="city">
-      <%= duck.user.city%>
+      <div>
+        <span class="card-price"><%= duck.price.round() %> € / day</span>
+      </div>
+      <div class="d-flex align-items-end flex-column card-city">
+        <div><%= duck.user.city%></div>
+      </div>
     </div>
 
 
