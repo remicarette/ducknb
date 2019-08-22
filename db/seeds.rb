@@ -119,6 +119,10 @@ create_booking("pending", simon, moritz.ducks.first)
 create_booking("accepted", simon, moritz.ducks[1])
 create_booking("refused", simon, moritz.ducks.last)
 
+simon.ducks.each do |duck|
+  create_booking("pending", moritz, duck)
+end
+
 
 puts "Je cree de sreviews"
 puts "---------------------------"
@@ -387,5 +391,3 @@ puts "Ducks created : #{simon.ducks.size}/4"
 puts "Ducks photos created : #{simon.duck_photos.size}/4"
 puts "Bookings : #{simon.bookings.size}"
 puts "Ducks reviews : #{simon.reviews.size}"
-
-
