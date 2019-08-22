@@ -1,6 +1,7 @@
 .card-booking {
   overflow: hidden;
-  height: 60px;
+  height: 80px;
+  width: auto;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -17,13 +18,14 @@
 }
 
 .card-booking h2 {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   margin: 0;
+  padding: 5px;
 }
 
 .card-booking p {
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
@@ -31,7 +33,7 @@
 }
 
 .card-booking .refused {
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
@@ -39,12 +41,12 @@
   color: red;
   position: absolute;
   right: 10px;
-  top: 20px
+  top: 10px;
 
 }
 
 .card-booking .accepted {
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
@@ -52,21 +54,21 @@
   color: green;
   position: absolute;
   right: 10px;
-  top: 20px
+  top: 20px;
 }
 
 .card-booking .pending {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.4;
   opacity: .7;
-  margin-bottom: 0;
+  margin-bottom: 4px;
   margin-top: 8px;
   color: #FFD700;
   position: absolute;
   right: 10px;
-  top: 20px
+  top: 5px;
 }
 
 .card-booking .card-booking-infos {
-  padding: 16px;
+  padding: 14px;
 }
