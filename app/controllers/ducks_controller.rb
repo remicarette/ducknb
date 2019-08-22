@@ -12,6 +12,7 @@ class DucksController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
     @carousel_counter = 1
     @duck = Duck.find(params[:id])
   end
