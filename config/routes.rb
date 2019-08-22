@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   # manage ducks
   get 'profiles/:id/', to: "profiles#show", as: 'profile'
   get 'profiles/:id/new', to: "profiles#new", as: 'profile_duck_new'
-
+  patch 'bookings/:id/accept', to: "bookings#accept", as: 'booking_accepted'
+  patch 'bookings/:id/refuse', to: "bookings#refuse", as: 'booking_refused'
 end
-
