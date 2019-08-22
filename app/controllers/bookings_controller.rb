@@ -11,7 +11,7 @@ class BookingsController < ApplicationController
       elsif booking.status == "accepted"
         @accepted << booking
       else
-        @refused<< booking
+        @refused << booking
     end
   end
     @my_ducks_bookings = current_user.ducks_bookings
@@ -36,16 +36,18 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
-    @booking.user = current_user
-    @booking.status = "pending"
-    @booking.duck = Duck.find(params[:duck_id])
-
-    if @booking.save!
+    duck = Duck.find(params[:duck_id])
+    if duck.bookable?(params[:start], params[:end])
+      @booking = Booking.new(booking_params)
+      @booking.user = current_user
+      @booking.status = "pending"
+      @booking.duck = duck
+      @booking.save!
       redirect_to bookings_path
     else
+      redirect_to duck_path(duck)
+    end
   end
-end
 
   private
 

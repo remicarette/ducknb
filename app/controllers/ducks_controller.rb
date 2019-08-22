@@ -52,6 +52,8 @@ class DucksController < ApplicationController
     redirect_to profile_path(current_user.id), notice: 'Deleted'
   end
 
+
+
   private
 
   def set_duck

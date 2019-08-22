@@ -41,5 +41,12 @@ class Duck < ApplicationRecord
     return reviews.size
   end
 
+  def bookable?(date_start, date_end)
+    booking_asked = date_start..date_end
+    self.bookings.each do |booking|
+      booking_range = booking.start..booking.end
+      return false if booking_asked.overlaps?(booking_range)
+    end
+    return true
+  end
 end
-
