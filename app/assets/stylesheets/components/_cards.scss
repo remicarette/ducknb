@@ -64,12 +64,18 @@
   font-weight: lighter;
 }
 
-.card-category .stars {
+.card-category .reviews {
   position: absolute;
   bottom: 5px;
   left: 10px;
-  font-size: 20px;
+  font-weight: lighter;
+  font-size: 16px;
 }
+
+.reviews .stars {
+  color: #E6BE2E;
+}
+
 
 .card-category .avatar img {
   position: absolute;
@@ -85,4 +91,14 @@
   bottom: 5px;
   right: 10px;
   font-weight: lighter;
+}
+
+.card-price {
+  font-size: 20px;
+  color: rgba(230,230,230, 0.9);
+}
+
+.card-city {
+  font-size: 18px;
+  color: rgba(230,230,230, 0.9);
 }
