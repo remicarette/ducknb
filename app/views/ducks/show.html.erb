@@ -45,7 +45,7 @@
 
   <!-- SHOW INFO ON THE DUCK  -->
 
-      <div class="d-flex justify-content-around">
+      <div class="d-flex justify-content-around postition-relative">
         <table>
           <tr>
             <td>Birthdate :</td>
@@ -128,8 +128,9 @@
       </div>
     </div>
 
-    <div class = "col-6 position-sticky">
-      <div class="book-form">
+
+    <div class = "col-6">
+      <div class="book-form position-sticky">
         <h3>Book <%= @duck.name %> now !</h3>
         <%= simple_form_for [@duck, @booking] do |f| %>
           <%= f.label :start, 'Date de réservation' %>
