@@ -14,11 +14,11 @@
       <a class="nav-link btn btn-light rounded px-3" id="pills-refused-tab" data-toggle="pill" href="#pills-refused" role="tab" aria-controls="pills-refused" aria-selected="false">refused</a>
     </li>
   </ul>
-  <!--<div class="row">-->
+  <div class="notab-effect">
     <div class="tab-content" id="pills-tabContent">
       <div class="tab-pane fade" id="pills-my-ducks" role="tabpanel" aria-labelledby="pills-my-ducks">
         <% @my_ducks_bookings.each do |booking| %>
-          <%= link_to booking_path(booking), class: "text-decoration-none" do %>
+          <%= link_to booking_path(booking) do %>
             <div class="card-booking">
               <%= cl_image_tag(booking.duck.photo,
               width: 150, height: 150, crop: :thumb, gravity: :face) %>
@@ -34,26 +34,26 @@
       </div>
       <div class="tab-pane fade show active" id="pills-pending" role="tabpanel" aria-labelledby="pills-pending">
         <%@pending.each do |booking| %>
-          <%= link_to booking_path(booking), class: "text-decoration-none" do %>
+          <%= link_to booking_path(booking) do %>
             <% render "card", booking: booking %>
           <% end %>
         <% end %>
       </div>
       <div class="tab-pane fade" id="pills-accepted" role="tabpanel" aria-labelledby="pills-accepted">
         <% @accepted.each do |booking| %>
-          <%= link_to booking_path(booking), class: "text-decoration-none" do %>
+          <%= link_to booking_path(booking) do %>
             <% render "card", booking: booking %>
           <%end%>
         <%end%>
       </div>
       <div class="tab-pane fade" id="pills-refused" role="tabpanel" aria-labelledby="pills-refused">
         <%@refused.each do |booking|%>
-          <%= link_to booking_path(booking), class: "text-decoration-none" do %>
+          <%= link_to booking_path(booking) do %>
             <% render "card", booking: booking %>
           <%end%>
         <%end%>
       </div>
     </div>
-  <!--</div>-->
+  </div>
   <br>
 </div>
