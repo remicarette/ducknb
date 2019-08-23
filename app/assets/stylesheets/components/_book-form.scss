@@ -6,8 +6,18 @@
   border-radius: 5px;
   box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
   background-color: white;
+  margin-top: 20px;
+  margin-left: 50px;
+  position: relative;
 }
 
 .book-form h3 {
   color: #2b748c;
+}
+
+.book-form p {
+  position: absolute;
+  right: 20px;
+  bottom: 5px;
+  font-size: 20px;
 }
