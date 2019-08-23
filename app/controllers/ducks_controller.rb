@@ -1,11 +1,9 @@
 class DucksController < ApplicationController
 
-
   before_action :set_duck, only: [:show, :edit, :update, :destroy]
 
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_duck, only: [:show, :edit, :update]
-
 
   def index
     @ducks = []
@@ -17,25 +15,18 @@ class DucksController < ApplicationController
     @users.each do |user|
       user.ducks.each do |duck|
         if params[:start].present? && params[:end].present?
-        @ducks << duck if duck.bookable?(params[:start], params[:end])
-      else
-        @ducks << duck
-      end
+          @ducks << duck if duck.bookable?(params[:start], params[:end])
+        else
+          @ducks << duck
+        end
       end
     end
-
   end
 
   def show
     @booking = Booking.new
     @carousel_counter = 1
     @duck = Duck.find(params[:id])
-  end
-
-  def search
-  end
-
-  def edit
   end
 
   def new
@@ -67,8 +58,6 @@ class DucksController < ApplicationController
     redirect_to profile_path(current_user.id), notice: 'Deleted'
   end
 
-
-
   private
 
   def set_duck
@@ -78,5 +67,4 @@ class DucksController < ApplicationController
   def duck_params
     params.require(:duck).permit(:name, :race, :sex, :colour, :weight, :birthdate, :tags, :photo, :price)
   end
-
 end
