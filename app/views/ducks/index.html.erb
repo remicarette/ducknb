@@ -12,18 +12,18 @@
   </ul>
 </div>
 <!-- TODO: refacto avec partials -->
-<% if params[:search].present? &&  @users == [] %>
+<% if @search.present? &&  @users == [] %>
 
   <div class="alert alert-info center-block">
-    <strong>Sorry!</strong> No ducks found in <%= params[:search].downcase.capitalize %> :(
+    <strong>Sorry!</strong> No ducks found in <%= params[:city].downcase.capitalize %> :(
   </div>
 
 <% else %>
 
   <div class="container">
-    <% if params[:search].present? && @users != [] %>
+    <% if params[:city].present? && @users != [] %>
 
-      <h2>Our best ducks in <%= params[:search] %></h2>
+      <h2>Our best ducks in <%= params[:city] %></h2>
 
     <% else %>
 

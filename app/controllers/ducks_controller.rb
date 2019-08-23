@@ -9,14 +9,15 @@ class DucksController < ApplicationController
 
   def index
     @ducks = []
-    if params[:search].present?
-      @users = User.where(city: params[:search].downcase.capitalize)
+    if params[:city].present?
+      @users = User.where(city: params[:city].downcase.capitalize)
     else
       @users = User.all
     end
   end
 
   def show
+    @booking = Booking.new
     @carousel_counter = 1
     @duck = Duck.find(params[:id])
   end
@@ -55,6 +56,8 @@ class DucksController < ApplicationController
     @duck.destroy
     redirect_to profile_path(current_user.id), notice: 'Deleted'
   end
+
+
 
   private
 

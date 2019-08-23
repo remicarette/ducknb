@@ -1,0 +1,24 @@
+
+.input-text-blue-duck {
+  color: #2b748c;
+  font-size: 20px;
+  font-weight: bold;
+
+
+  &::placeholder {
+    color: #2b748c;
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 0.5;
+  }
+
+  &:focus {
+    color: #2b748c;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+.input-w200px {
+  max-width: 150px;
+}
