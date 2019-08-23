@@ -1,0 +1,38 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon bg-green d-flex justify-content-between">
+
+  <div class="d-flex align-items-center">
+      <!-- LOGO + NAME  -->
+    <div class ="navbar-brand d-flex align-items-center">
+      <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
+        <div><%= image_tag 'duck.png', class: "mx-1" %></div>
+        <div>Ducknd</div>
+      <% end %>
+    </div>
+
+    <!-- FORM -->
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1"><%= image_tag "search.svg", alt: "search" %></span>
+      </div>
+      <%= text_field_tag :search,
+        params[:query],
+        class: "search-field form-control",
+        placeholder: "Find a duck"
+      %>
+      <%# submit_tag "Search", name: nil, class: "btn btn-primary btn-yellow ml-1" %>
+
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto align-items-center">
+      <li class="nav-item">
+        <%= link_to "Sign in", bookings_path, class: "nav-link" %>
+      </li>
+       <li class="nav-item">
+        |
+      </li>
+      <li class="nav-item">
+        <%= link_to "Sign up", bookings_path, class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+</div>
