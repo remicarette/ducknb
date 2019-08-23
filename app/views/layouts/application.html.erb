@@ -13,6 +13,10 @@
   </head>
   <body>
     <%= render 'shared/flashes' %>
+    <%#= render 'shared/navbar_home' if     params[:action] != "home"  %>
+    <%#= render 'shared/navbar'      unless params[:action] != "home" %>
+
+
 
     <% if user_signed_in? && params[:action] != "home" %>
       <%= render 'shared/navbarlogged', user: current_user %>

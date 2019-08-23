@@ -1,16 +1,4 @@
 
-<h1>Ducks#index</h1>
-<p>Find me in app/views/ducks/index.html.erb</p>
-<div class="container">
-  <ul>
-    <% @ducks.each do |card| %>
-      <li data-duck-id="<%= duck.id %>"
-        <%= duck.name %>
-        <%= img_tag '/shared/card', class="card" %>
-      </li>
-    <% end %>
-  </ul>
-</div>
 <!-- TODO: refacto avec partials -->
 <% if @search.present? &&  @users == [] %>
 
@@ -23,11 +11,11 @@
   <div class="container">
     <% if params[:city].present? && @users != [] %>
 
-      <h2>Our best ducks in <%= params[:city] %></h2>
+      <h2 class="list-ducks">Our best ducks in <%= params[:city] %></h2>
 
     <% else %>
 
-      <h2>Our best ducks</h2>
+      <h2 class="list-ducks">Our best ducks</h2>
 
     <% end %>
 

@@ -1,13 +1,16 @@
-<div class="card-booking">
-  <%= cl_image_tag(booking.duck.photo,
-      width: 150,
-      height: 150,
-      crop: :thumb,
-      gravity: :face) %>
-  <div class="card-booking-infos">
-    <h2><%= booking.duck.name%></h2>
-    <p>Owner: <%= booking.user.first_name.capitalize %> <%= booking.user.last_name.capitalize %></p>
-    <p>From <%= booking.start%> Until <%= booking.end%></p>
-    <div class=<%= booking.status%>> <%= booking.status%> </div>
+  <div class="card-booking">
+    <%= cl_image_tag(booking.duck.photo, width: 150, height: 150, crop: :thumb, gravity: :face) %>
+    <div class="card-booking-infos">
+      <h2><%= booking.duck.name%></h2>
+      <p>Owner:
+        <%= booking.duck.user.first_name.capitalize %>
+        <%= booking.duck.user.last_name.capitalize %></p>
+      <p>From
+        <%= booking.start%>
+        Until
+        <%= booking.end%></p>
+      <div class=<%= booking.status%>>
+        <%= booking.status%>
+      </div>
+    </div>
   </div>
-</div>

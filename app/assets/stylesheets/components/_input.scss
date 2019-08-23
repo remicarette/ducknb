@@ -23,6 +23,10 @@
   max-width: 150px;
 }
 
+.input-w100px {
+  max-width: 100px;
+}
+
 .input-group-text {
   background-color: white;
   height:38px;
@@ -37,6 +41,10 @@
   padding-left: 0px;
   border-color: white;
   border-radius: 0 2px 2px 0;
+}
+
+.form-group {
+  margin: 0px !important;
 }
 
 .search-field:focus {
