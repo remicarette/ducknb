@@ -141,7 +141,6 @@ popop = create_duck(nico, "Popop Duck", 20.10, "https://www.servus.com/tachyon/s
 della = create_duck(nico, "Della Duck", 30.12, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTursMUR7DTLIIbYksfBisOadxfD-k5sfS2tplx4GOYZBtpq6pq")
 lulubelle = create_duck(moritz, "Lulubelle Louft", 5, "https://steamuserimages-a.akamaihd.net/ugc/939434973168766379/D1167147811884D24C9435D5D5C784132B412209/")
 tasty = create_duck(moritz, "Archibald Gripsou", 25.99, "https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2018.2F07.2F30.2Fc59bd4cd-4f02-43e3-a450-360e224dfc87.2Ejpeg/748x372/quality/80/crop-from/center/magret-de-canard-aux-pommes.jpeg")
-trump = create_duck(moritz, "Trump duck", 1.00, "https://www.amsterdamduckstore.com/wp-content/uploads/2017/07/Trump-rubber-duck-Amsterdam-Duck-Store.jpg")
 # create_duck(moritz, "Royal duck", 53000, "https://images.pexels.com/photos/1362013/pexels-photo-1362013.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 # create_duck(moritz, "Bikini duck", 89, "https://www.hotspringworld.co.uk/wp-content/uploads/2019/05/Bikini-Duck.jpg")
 # create_duck(moritz, "Banana duck", 32, "https://i.kym-cdn.com/photos/images/original/001/248/525/3e4.jpg")
@@ -159,7 +158,7 @@ Duck.all.each do |duck|
   users = [simon, moritz, remi, pab, nico, franck]
   users.delete(duck.user)
   counter = 0
-  15.times do
+  rand(12..18).times do
     b =  create_booking("accepted", users[rand(0..(users.size) -1)], duck, counter)
       create_review(b, rand(1..5))
       counter += 11
