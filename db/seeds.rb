@@ -68,9 +68,29 @@ def create_booking(status, user, duck, counter)
 end
 
 def create_review(booking, stars)
-  contents = ["Incroyable moment avec ce joli canard !", "Good duck, even heavier than in the description - I recommend!",
-  "Magnifique duck experience :)","Un canard normal, pas de problemes.", "On a passé un super week-end avec lui. Tres gentil, ce canard !",
-"Elle a meme pondu des oeufs et on en a fait une omelett savoureuse !"]
+  contents = [
+    "Incroyable moment avec ce joli canard !",
+    "Good duck, even heavier than in the description - I recommend!",
+    "Magnifique duck experience :)","Un canard normal, pas de problemes.",
+    "On a passé un super week-end avec lui. Tres gentil, ce canard !",
+    "Elle a meme pondu des oeufs et on en a fait une omelett savoureuse !",
+    "Merci pour ton canard ! J'ai passé un bon weekend !",
+    "Au festival du canard, il a fait un tabac",
+    "A prendre avec soit pour le festival",
+    "Recommandé par Maurice, au top !!",
+    "Ce canard a embelli ma journée !!",
+    "Lovely duck !",
+    "What a nice duck !",
+    "Nice duck bro ! Thanks !",
+    "I was happy with my duck !",
+    "Ce n'était pas vraiment la couleur que je souhaitais",
+    "Un peu énervé mais sympathique !",
+    "J'aurai aimé avoir un autre canard",
+    "La prochaine fois, je prends son petit frère",
+    "Merci mon ami pour ton canard",
+    "Mon canard s'est bien entendu avec l'es*** de PAB",
+    "Vivement un guitare canard",
+    "Je l'ai loué pour aller sur mon île privé !"]
   Review.create!(
     booking: booking,
     content: contents[rand(0..contents.size - 1)],
@@ -117,11 +137,11 @@ loulou = create_duck(remi, "Loulou", 40.16, "https://images.unsplash.com/photo-1
 riri = create_duck(remi, "Riri", 20.30, "https://images.unsplash.com/photo-1521730365094-d6978fa2ac8d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60")
 gontran = create_duck(pab, "Gontran Bonheur", 19.40, "https://www.outfox-world.de/_Resources/Persistent/09bff8a5360ba5ca46cd89dd6dd2a30783cb8562/duck-1486716_1920%20Kopie-1920x989-880x453.jpg")
 elvire = create_duck(pab, "Elvire Ecoutum", 20.30, "https://1.bp.blogspot.com/-DCXxQj7NuN4/W-VsE4PcHoI/AAAAAAAAwr4/EH7m4cNDFcIrUEOqaa7sX-XIACvE0zK-ACLcBGAs/s1600/Humanface5.jpg")
-popop = create_duck(nico, "Popop Duck", 20.10, "https://papermilkdesign.com/images/donald-duck-clipart-trump-16.jpg")
+popop = create_duck(nico, "Popop Duck", 20.10, "https://www.servus.com/tachyon/sites/4/2018/06/FO-1W27XJVDS5N11-stv_cover_landscape-3.jpg?resize=1200,675&crop_strategy=smart")
 della = create_duck(nico, "Della Duck", 30.12, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTursMUR7DTLIIbYksfBisOadxfD-k5sfS2tplx4GOYZBtpq6pq")
 lulubelle = create_duck(moritz, "Lulubelle Louft", 5, "https://steamuserimages-a.akamaihd.net/ugc/939434973168766379/D1167147811884D24C9435D5D5C784132B412209/")
 tasty = create_duck(moritz, "Archibald Gripsou", 25.99, "https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2018.2F07.2F30.2Fc59bd4cd-4f02-43e3-a450-360e224dfc87.2Ejpeg/748x372/quality/80/crop-from/center/magret-de-canard-aux-pommes.jpeg")
-
+trump = create_duck(moritz, "Trump duck", 1.00, "https://www.amsterdamduckstore.com/wp-content/uploads/2017/07/Trump-rubber-duck-Amsterdam-Duck-Store.jpg")
 # create_duck(moritz, "Royal duck", 53000, "https://images.pexels.com/photos/1362013/pexels-photo-1362013.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 # create_duck(moritz, "Bikini duck", 89, "https://www.hotspringworld.co.uk/wp-content/uploads/2019/05/Bikini-Duck.jpg")
 # create_duck(moritz, "Banana duck", 32, "https://i.kym-cdn.com/photos/images/original/001/248/525/3e4.jpg")
