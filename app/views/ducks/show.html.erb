@@ -44,39 +44,38 @@
       </div>
 
   <!-- SHOW INFO ON THE DUCK  -->
-
-      <div class="d-flex justify-content-around postition-relative">
+<!-- class="d-flex justify-content-around postition-relative" -->
+      <div class="duck-infos d-flex justify-content-around postition-relative">
         <table>
           <tr>
-            <td>Birthdate :</td>
-            <td><%= @duck.birthdate %></td>
+            <td><b>Birthdate:  </b></td>
+            <td><%=@duck.convert_date(@duck.birthdate) %></td>
           </tr>
           <tr>
-            <td>Race :</td>
+            <td><b>Race:  </b></td>
             <td><%= @duck.race %></td>
-          </tr>
-          <tr>
-            <td>Sex :</td>
-            <td><%= @duck.sex %></td>
           </tr>
         </table>
 
         <table>
           <tr>
-            <td>Colour :</td>
-            <td><%= @duck.colour %></td>
+            <td><b>Sex:  </b></td>
+            <td><%= @duck.sex %></td>
           </tr>
           <tr>
-            <td>Weight :</td>
+            <td><b>Colour:  </b></td>
+            <td><%= @duck.colour %></td>
+          </tr>
+        </table>
+
+        <table>
+          <tr>
+            <td><b>Weight:  </b></td>
             <td><%= @duck.weight %></td>
           </tr>
           <tr>
-            <td>Tags :</td>
-            <td><%= @duck.tags %></td>
-          </tr>
-          <tr>
-            <td>Price  :</td>
-            <td><%= @duck.price.round(2) %> €</td>
+            <td><b>Tags:  </b></td>
+            <td>#<%= @duck.tags.gsub! ',', ' #' %></td>
           </tr>
         </table>
       </div>
@@ -88,49 +87,16 @@
 
 
   <!-- DISPLAY ALL REVIEWS -->
-  <%full_stars = "<i class='fas fa-star'></i>"%>
-  <%empty_stars = "<i class='far fa-star'></i>"%>
-
-
     <div class = 'col-6'>
       <div class = "all-reviews">
-        <% @duck.reviews.each do |review| %>
-          <div class="card-review">
-            <% full = review.stars.to_i %>
-            <% empty = (5 - full).to_i %>
-            <div class="review-content">
-              <%= review.content %>
-            </div>
-            <div class="review-stars">
-              <%full.times do %>
-                <%= full_stars.html_safe %>
-              <%end%>
-              <%empty.times do %>
-                <%= empty_stars.html_safe %>
-              <%end%>
-            </div>
-            <div class="review-info">
-              <% upd = review.updated_at %>
-              Created: <%= review.convert_date(review.created_at) %>
-              <% unless upd.nil? %>
-                <br> <i> Edited: <%= review.convert_date(review.updated_at) %> </i>
-              <% end %>
-            </div>
-            <br>
-            <div class= "review-update-edit">
-              <%= link_to "Edit Review", edit_review_path(review) %>
-              <%= link_to review_path(review), method: :delete, data: { confirm: "Are you sure?" } do %>
-                <i class="fa fa-trash destroy_dose"></i>
-              <% end %>s
-            </div>
-          </div>
+        <% @duck.reviews.sort_by{|review| review.created_at}.reverse.each do |review| %>
+          <%= render 'card', review: review %>
         <% end %>
       </div>
     </div>
 
-
     <div class = "col-6">
-      <div class="book-form position-sticky">
+      <div class="book-form">
         <h3>Book <%= @duck.name %> now !</h3>
         <%= simple_form_for [@duck, @booking] do |f| %>
           <%= f.label :start, 'Date de réservation' %>
@@ -155,10 +121,13 @@
 
           <%= submit_tag "Book", name: nil, class: "btn btn-flat-blue" %>
         <% end %>
+        <p><b><%= @duck.price.round(2) %> €</b> /day</p>
       </div>
     </div>
   </div>
 </div>
+
+
 
 <div class="carousel-item">
   <img src="..." alt="...">
