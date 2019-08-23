@@ -19,18 +19,22 @@
   <div class="tab-content" id="pills-tabContent">
     <div class="tab-pane fade" id="pills-my-ducks" role="tabpanel" aria-labelledby="pills-my-ducks">
       <% @my_ducks_bookings.each do |booking| %>
-        <%= link_to booking_path(booking), class: "text-decoration-none" do %>
           <div class="card-booking">
             <%= cl_image_tag(booking.duck.photo,
             width: 150, height: 150, crop: :thumb, gravity: :face) %>
             <div class="card-booking-infos">
               <h2> <%= booking.duck.name %> <%= booking.user.first_name %></h2>
               <p>From <%= booking.start%> Until <%= booking.end%></p>
-              <%= link_to "Accept", booking_accepted_path(booking), method: :patch, class: "checkbox" %>
-              <%= link_to "Refuse", booking_refused_path(booking), method: :patch, class: "checkbox" %>
+
+              <%=link_to booking_accepted_path(booking), method: :patch, class: "checkbox", style: "text-decoration: none;" do %>
+                <i class="fas fa-check text-success"></i>
+              <% end %>
+              <%= link_to booking_refused_path(booking), method: :patch, class: "checkbox" do %>
+                <i class="fas fa-times text-danger"></i>
+              <% end %>
+
             </div>
           </div>
-        <% end %>
       <% end %>
     </div>
 
