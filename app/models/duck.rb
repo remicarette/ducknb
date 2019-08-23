@@ -45,10 +45,11 @@ class Duck < ApplicationRecord
     date_start = Date.parse(date_start)
     date_end = Date.parse(date_end)
     booking_asked = date_start..date_end
-    self.bookings.each do |booking|
-      booking_range = booking.start..booking.end
-      start = booking.start - date_start
-      return false if booking_asked.overlaps?(booking_range)
+    bookings.each do |booking|
+      if booking.status != "refused"
+        booking_range = booking.start..booking.end
+        return false if booking_asked.overlaps?(booking_range)
+      end
     end
     return true
   end
