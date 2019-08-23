@@ -1,3 +1,8 @@
+<% params[:city].present? ? city = params[:city] : city = "" %>
+<% params[:start].present? ? start = params[:start] : start = "" %>
+<% params[:end].present? ? end_date = params[:end] : end_date = "" %>
+
+
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon bg-green d-flex justify-content-between">
 
   <div class="d-flex align-items-center">
@@ -9,18 +14,52 @@
       <% end %>
     </div>
 
+      <% unless params[:action] == "show" %>
     <!-- FORM -->
-    <%= form_tag ducks_path, method: :get, class:'form-inline', enforce_utf8: false do %>
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1"><%= image_tag "search.svg", alt: "search" %></span>
-      </div>
-      <%= text_field_tag :search,
-        params[:query],
-        class: "search-field form-control",
-        placeholder: "Find a duck"
-      %>
-      <%# submit_tag "Search", name: nil, class: "btn btn-primary btn-yellow ml-1" %>
-    <% end %>
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><%= image_tag "search.svg", alt: "search" %></span>
+        </div>
+        <%= simple_form_for "", url: ducks_path, method: :get do |f| %>
+        <div class="d-flex align-items-center">
+          <div>
+            <%= text_field_tag :city,
+              params[:query],
+              class: "search-field form-control",
+              placeholder: "Choose your city",
+              value: city
+            %>
+          </div>
+          <div class="">
+            <%= f.input :start,
+              as: :string,
+              required: false,
+              label: false,
+              placeholder: "From",
+              input_html: {
+                id: "range_start",
+                class: "datepicker ml-2 input-w100px text-center",
+                value: start
+                } %>
+          </div>
+          <div>
+
+            <%= f.input :end,
+                      as: :string,
+                      required: false,
+                      label: false,
+                      placeholder: "To",
+                      input_html: {
+                        id: "range_end",
+                        class: "datepicker ml-2 input-w100px text-center",
+                        value: end_date
+                      } %>
+          </div>
+          <div>
+            <%= submit_tag "Search", name: nil, class: "btn btn-primary btn-yellow ml-2" %>
+          </div>
+        </div>
+      <% end %>
+      <% end %>
 
   </div>
 

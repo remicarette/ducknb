@@ -8,11 +8,25 @@ class DucksController < ApplicationController
 
   def index
     @ducks = []
-    if params[:city].present?
-      @users = User.where(city: params[:city].downcase.capitalize).where.not(id: current_user.id)
+    # si loggé
+    if current_user.present?
+      # si recherche sur city + retire l'utilisateur connecté
+      if params[:city].present?
+        @users = User.where(city: params[:city].downcase.capitalize).where.not(id: current_user.id)
+      # sinon on retire l'utilisateur connecté
+      else
+        @users = User.where.not(id: current_user.id)
+      end
     else
-      @users = User.where.not(id: current_user.id)
+      # on recupére les canards de la ville
+      if params[:city].present?
+        @users = User.where(city: params[:city].downcase.capitalize)
+      # on récupère tous les utilisateurs
+      else
+        @users = User.all
+      end
     end
+
     @users.each do |user|
       user.ducks.each do |duck|
         if params[:start].present? && params[:end].present?
