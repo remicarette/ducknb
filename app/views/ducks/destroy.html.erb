@@ -1,2 +1,8 @@
-<h1>Ducks#destroy</h1>
-<p>Find me in app/views/ducks/destroy.html.erb</p>
+<h1>Destroy</h1>
+
+<div class= "container">
+  <div>
+      <%= simple_form_for @duck do |f| %>
+      <%= f.input :name %>
+      <%= f.submit "edit your duck", class: "btn btn-warning" %>
+    <% end %>
