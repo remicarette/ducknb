@@ -98,7 +98,7 @@ simon = create_user('simon', 'azerty', '2 avenue des saules', '59000', 'Lille', 
 moritz = create_user('moritz', 'qwertz', '20 boulevard de la liberté', '59000', 'Lille', 'https://ca.slack-edge.com/T02NE0241-UL7BFB5QQ-0a2dc0a5ae19-48')
 franck = create_user('franck', 'azerty', '2 boulevard carnot', '59800', 'Lille', 'https://tmssl.akamaized.net/images/portrait/originals/5594-1542273058.jpg')
 remi =  create_user('remi', 'azerty', '24 Rue Holbach', '59800', 'Lille', 'https://ca.slack-edge.com/T02NE0241-UL79224P2-7a94c0d24580-72')
-pab =  create_user('remi', 'azerty', '287 Rue Léon Gambetta', '59800', 'Lille', 'https://ca.slack-edge.com/T02NE0241-UL0U0N3NV-f7cb9889f0c7-72')
+pab =  create_user('pab', 'azerty', '287 Rue Léon Gambetta', '59800', 'Lille', 'https://ca.slack-edge.com/T02NE0241-UL0U0N3NV-f7cb9889f0c7-72')
 nico =  create_user('nico', 'azerty', '78 Rue Alphonse Mercier', '59800', 'Lille', 'https://ca.slack-edge.com/T02NE0241-UL7JFQ0R3-3696ceb54c45-72')
 
 
@@ -135,21 +135,21 @@ print " ------------------ CREATE BOOKINGS :"
 
 # def create_booking(status, user, duck)
 
-Duck.all.each |duck| do
+Duck.all.each do |duck|
   users = [simon, moritz, remi, pab, nico, franck]
   users.delete(duck.user)
   counter = 0
-  15 times do
-    b =  create_booking("accepted",users[rand(0..users.size -1), duck, counter])
+  15.times do
+    b =  create_booking("accepted", users[rand(0..(users.size) -1)], duck, counter)
       create_review(b, rand(1..5))
       counter += 11
   end
-  times do
-    b =  create_booking("pending",users[rand(0..users.size -1), duck, counter])
+  1.times do
+    b =  create_booking("pending",users[rand(0..(users.size) -1)], duck, counter)
     counter += 11
   end
-  5 times do
-    b =  create_booking("refused",users[rand(0..users.size -1), duck, counter])
+  5.times do
+    b =  create_booking("refused",users[rand(0..(users.size) -1)], duck, counter)
     counter += 11
   end
 
