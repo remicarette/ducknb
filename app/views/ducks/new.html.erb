@@ -1,6 +1,15 @@
 <div class= "container">
   <h1 class="text-center my-3">Add your duck</h1>
   <div>
+      <%= simple_form_for @duck do |f| %>
+      <%= f.input :name %>
+      <%= f.input :birthdate %>
+      <%= f.input :race %>
+      <%= f.input :sex %>
+      <%= f.input :weight %>
+      <%= f.input :colour %>
+      <%= f.input :tags %>
+    <%= f.submit "new duck", class: "btn btn-primary"%>
     <%= simple_form_for @duck do |f| %>
     <%= f.input :name %>
     <%= f.input :birthdate %>
