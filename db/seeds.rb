@@ -40,7 +40,7 @@ end
 def create_duck(owner, name, price, url)
 
   d = Duck.new(
-    birthdate: Date.new(),
+    birthdate: Date.today,
     name: name,
     race: RACES[(rand() * RACES.size - 1).round],
     sex: SEXS[(rand() * SEXS.size - 1).round],

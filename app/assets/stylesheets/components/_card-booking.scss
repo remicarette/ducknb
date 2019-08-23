@@ -9,6 +9,7 @@
   margin-bottom: 10px;
   margin-top: 10px;
   position: relative;
+  margin: 10px auto;
 }
 
 .card-booking img {
@@ -20,12 +21,14 @@
 .card-booking h2 {
   font-size: 14px;
   font-weight: bold;
+  color: #387d40;
   margin: 0;
   padding: -2px 5px;
 }
 
 .card-booking p {
   font-size: 11px;
+  color: #387d40;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
@@ -34,6 +37,7 @@
 
 .card-booking .refused {
   font-size: 16px;
+  color: #387d40;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 4px;
