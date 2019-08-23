@@ -1,18 +1,78 @@
 <div class= "container">
-  <h1 class="text-center my-3">Add your duck</h1>
-  <div>
-    <%= simple_form_for @duck do |f| %>
-      <%= f.input :name %>
-      <%= f.input :birthdate %>
-      <%= f.input :race %>
-      <%= f.input :sex %>
-      <%= f.input :weight %>
-      <%= f.input :colour %>
-      <%= f.input :price %>
-      <%= f.input :tags %>
-      <%= f.input :photo %>
-      <%= f.input :photo_cache, as: :hidden %>
-    <%= f.submit "new duck", class: "btn btn-primary" %>
-    <% end %>
-  </div>
+    <h1 class="text-center my-3">Add your duck</h1>
+    <div>
+      <%= simple_form_for @duck do |f| %>
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <%= f.input :name,
+                          placeholder: 'Your duck name',
+                          input_html: {
+                            class: "form-control input-text-blue-duck"
+                            } %>
+            </div>
+          </div>
+          <div class="col-4">
+            <%= f.input  :birthdate,
+                          as: :string,
+                          required: true,
+                          placeholder: "22/08/2019",
+                          input_html: {
+                          id: "range_start",
+                          class: "datepicker form-control input-text-blue-duck"
+                          } %>
+          </div>
+          <div class="col-4">
+            <%= f.input :race,
+                          placeholder: 'Your duck race',
+                          input_html: {
+                            class: "form-control input-text-blue-duck"
+                            } %>
+          </div>
+          <div class="col-4">
+            <%= f.input :sex,
+                          placeholder: "Male | Female | Trans",
+                          input_html: {
+                            class: "form-control input-text-blue-duck"
+                          } %>
+          </div>
+          <div class="col-4">
+            <%= f.input :weight,
+                          placeholder: '5',
+                          input_html: {
+                            class: "form-control input-text-blue-duck"
+                          } %>
+          </div>
+          <div class="col-4">
+            <%= f.input :colour,
+                          placeholder: 'Your duck color',
+                          input_html: {
+                            class: "form-control input-text-blue-duck"
+                          } %>
+          </div>
+          <div class="col-4">
+            <%= f.input :price,
+                          placeholder: "5",
+                          input_html: {
+                            class: "form-control input-text-blue-duck"
+                          } %>
+          </div>
+          <div class="col-4">
+            <%= f.input :tags,
+                          placeholder: "5",
+                          input_html: {
+                            class: "form-control input-text-blue-duck"
+                          } %>
+          </div>
+          <div class="col-4">
+            <%= f.input :photo %>
+          </div>
+          <%= f.input :photo_cache, as: :hidden %>
+          <div class="col-6">
+            <%= f.submit "new duck", class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
 </div>

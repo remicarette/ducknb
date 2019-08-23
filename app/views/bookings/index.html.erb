@@ -22,7 +22,7 @@
               <%= cl_image_tag(booking.duck.photo,
               width: 150, height: 150, crop: :thumb, gravity: :face) %>
               <div class="card-booking-infos">
-                <h2> <%= booking.duck.name %> <%= booking.duck.first_name %></h2>
+                <h2> <%= booking.duck.name %> <%= booking.user.first_name %></h2>
                 <p>From <%= booking.start%> Until <%= booking.end%></p>
                 <%= link_to "Accept", booking_accepted_path(booking), method: :patch, class: "checkbox" %>
                 <%= link_to "Refuse", booking_refused_path(booking), method: :patch, class: "checkbox" %>

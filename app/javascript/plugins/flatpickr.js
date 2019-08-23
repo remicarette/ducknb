@@ -7,5 +7,3 @@ flatpickr("#range_start", {
     dateFormat: "d-m-Y",
     plugins: [new rangePlugin({ input: "#range_end"})]
 });
-
-
