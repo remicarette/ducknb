@@ -1,7 +1,15 @@
 
 <!-- BANNER -->
 <div class="banner">
-  <%= render 'shared/navbarhome_logged', user: current_user %>
+  <!-- NAVBAR BAR -->
+  <div class="banner-navbar">
+    <% if user_signed_in? %>
+      <%= render 'shared/navbarhome_logged', user: current_user %>
+    <% else %>
+      <%= render 'shared/navbarhome', user: current_user %>
+    <% end %>
+  </div>
+  <!-- BANNER CONTENT -->
   <div class="container">
     <h1>Ducknb</h1>
     <p>Find your best duck for a week</p>

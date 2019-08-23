@@ -1,31 +1,29 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon d-flex justify-content-between">
+<div class="navbar navbar-expand-sm navbar-lewagon transparent navbar-light d-flex justify-content-between">
 
-  <div class="d-flex align-items-center">
-    <span class ="navbar-brand">
-      <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag 'duck_logo.jpg', class: "navbar-brand" %>Ducknd
+  <!-- LOGO + NAME  -->
+  <div class="">
+    <div class ="navbar-brand d-flex align-items-center">
+      <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
+        <div><%= image_tag 'duck.png', class: "mx-1" %></div>
+        <div>Ducknd</div>
       <% end %>
-
-    </span>
+    </div>
   </div>
 
+  <!-- LINKS  -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto align-items-center">
       <li class="nav-item">
-        <%= link_to "Booking", bookings_path, class: "nav-link" %>
+        <%= link_to "Créer une expérience", bookings_path, class: "nav-link" %>
       </li>
        <li class="nav-item">
         |
       </li>
       <li class="nav-item">
-        <%= link_to "Manage", profile_path(current_user), class: "nav-link" %>
+        <%= link_to "Manage", profile_path(current_user), class: "nav-link white" %>
       </li>
       <li class="nav-item">
         |
-      </li>
-
-      <li class="nav-item">
-        <%= link_to "Add a Duck",  new_duck_path, class: "nav-link" %>
       </li>
 
       <!-- DROPDOWN ON AVATAR -->

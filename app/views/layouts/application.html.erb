@@ -14,15 +14,13 @@
   <body>
     <%= render 'shared/flashes' %>
 
-    <% if user_signed_in? %>
-        <% if params[:action] == "home" %>
-        <% else %>
-          <%= render 'shared/navbarlogged', user: current_user %>
-        <% end %>
-    <% else %>
-          <%= render 'shared/navbarhome' %>
+    <% if user_signed_in? && params[:action] != "home" %>
+      <%= render 'shared/navbarlogged', user: current_user %>
     <% end %>
 
+    <% if !user_signed_in? && params[:action] != "home" %>
+      <%= render 'shared/navbarunlogged', user: current_user %>
+    <% end %>
 
     <%= yield %>
     <%= javascript_include_tag 'application' %>

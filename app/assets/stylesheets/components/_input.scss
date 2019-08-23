@@ -22,3 +22,24 @@
 .input-w200px {
   max-width: 150px;
 }
+
+.input-group-text {
+  background-color: white;
+  height:38px;
+  border: 0px;
+}
+
+.input-group-text img {
+  height: 24px;
+}
+
+.search-field {
+  padding-left: 0px;
+  border-color: white;
+  border-radius: 0 2px 2px 0;
+}
+
+.search-field:focus {
+  border-color: white;
+  box-shadow: none;
+}

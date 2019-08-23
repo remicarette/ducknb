@@ -1,20 +1,25 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon d-flex justify-content-between">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon bg-green d-flex justify-content-between">
 
   <div class="d-flex align-items-center">
-    <span class ="navbar-brand">
-      <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag 'duck_logo.jpg', class: "navbar-brand" %>Ducknb
+      <!-- LOGO + NAME  -->
+    <div class ="navbar-brand d-flex align-items-center">
+      <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
+        <div><%= image_tag 'duck.png', class: "mx-1" %></div>
+        <div>Ducknd</div>
       <% end %>
+    </div>
 
-    </span>
-
+    <!-- FORM -->
     <%= form_tag ducks_path, method: :get, class:'form-inline', enforce_utf8: false do %>
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1"><%= image_tag "search.svg", alt: "search" %></span>
+      </div>
       <%= text_field_tag :search,
         params[:query],
-        class: "form-control",
+        class: "search-field form-control",
         placeholder: "Find a duck"
       %>
-      <%= submit_tag "Search", name: nil, class: "btn btn-primary" %>
+      <%# submit_tag "Search", name: nil, class: "btn btn-primary btn-yellow ml-1" %>
     <% end %>
 
   </div>
