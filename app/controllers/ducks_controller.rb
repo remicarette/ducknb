@@ -1,4 +1,5 @@
 class DucksController < ApplicationController
+  before_action :set_duck, only: %i[show edit update destroy]
 
   before_action :set_duck, only: [:show, :edit, :update, :destroy]
 
