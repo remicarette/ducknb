@@ -53,4 +53,6 @@ class Duck < ApplicationRecord
     end
     return true
   end
+
+
 end

@@ -1,0 +1,29 @@
+<%full_stars = "<i class='fas fa-star'></i>"%>
+<%empty_stars = "<i class='far fa-star'></i>"%>
+<div class="card-review">
+  <% full = review.stars.to_i %>
+  <% empty = (5 - full).to_i %>
+  <div class="review-descr">
+    <p><%= review.booking.user.first_name.capitalize %> wrote on <%= review.convert_date(review.created_at) %>:</p>
+  </div>
+  <div class="review-avatar">
+    <%= image_tag(review.booking.user.photo)%>
+  </div>
+  <div class="review-content">
+    <%= review.content %>
+  </div>
+  <div class="review-stars">
+    <%full.times do %>
+      <%= full_stars.html_safe %>
+    <%end%>
+    <%empty.times do %>
+      <%= empty_stars.html_safe %>
+    <%end%>
+  </div>
+  <div class="review-info">
+    <% unless review.updated_at.nil? %>
+      <br> <i> Edited: </i><%= review.convert_date(review.updated_at) %>
+    <% end %>
+  </div>
+  <br>
+</div>
