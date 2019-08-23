@@ -110,10 +110,10 @@
               <%end%>
             </div>
             <div class="review-info">
-              <% upd = review.updated_at.to_date %>
-              Created: <%= review.created_at.to_date %>
+              <% upd = review.updated_at %>
+              Created: <%= review.convert_date(review.created_at) %>
               <% unless upd.nil? %>
-                <br> <i> Edited: <%= review.updated_at.to_date %> </i>
+                <br> <i> Edited: <%= review.convert_date(review.updated_at) %> </i>
               <% end %>
             </div>
             <br>
@@ -167,3 +167,5 @@
     <p>...</p>
   </div>
 </div>
+
+<% console %>
