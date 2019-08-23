@@ -30,7 +30,7 @@ def create_user(name, address, zip_code, city, photo)
     address: '2 avenue des saules',
     zip_code: '59000',
     city: 'Lille',
-    photo: 'https://ca.slack-edge.com/T02NE0241-UL7B9TJRW-8ac16206f4ef-48'
+    photo: photo
   )
   return User.last
 
