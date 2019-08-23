@@ -15,9 +15,12 @@
     <%= render 'shared/flashes' %>
 
     <% if user_signed_in? %>
-      <%= render 'shared/navbarlogged', user: current_user %>
+        <% if params[:action] == "home" %>
+        <% else %>
+          <%= render 'shared/navbarlogged', user: current_user %>
+        <% end %>
     <% else %>
-      <%= render 'shared/navbarhome' %>
+          <%= render 'shared/navbarhome' %>
     <% end %>
 
 

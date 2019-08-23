@@ -1,5 +1,5 @@
 .navbar-lewagon {
-  background: white;
+  background-color: rgba(0,0,0,0.0);
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -13,3 +13,22 @@
 .logo {
   width : 56px;
 }
+
+.navbar-lewagon .nav-item {
+  color: $white;
+}
+
+.navbar-lewagon a {
+  color: $white !important;
+}
+
+.navbar-lewagon a:hover {
+  color: $duck-yellow !important;
+}
+
+
+// $duck-green: #387d40;
+// $duck-blue: #2b748c;
+// $duck-blue-light: #368896;
+// $duck-blue-1: #378B9D;
+// $duck-blue-2: #3883A0;
