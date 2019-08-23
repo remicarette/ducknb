@@ -19,18 +19,18 @@ RACES = [
 SEXS = ['Male', 'Female']
 
 
-def create_user(name, address, zip_code, city, photo)
+def create_user(name, password, address, zip_code, city, photo)
 
   user = User.create!(
     first_name: "#{name}",
     last_name: 'chretien',
     email: "#{name}@ducknb.com",
-    password: 'azerty',
+    password: password,
     birthdate: Date.new(),
     address: '2 avenue des saules',
     zip_code: '59000',
     city: 'Lille',
-    photo: 'https://ca.slack-edge.com/T02NE0241-UL7B9TJRW-8ac16206f4ef-48'
+    photo: photo
   )
   return User.last
 
@@ -91,9 +91,9 @@ print " ------------------ CREATE USERS :"
 
 # def create_user(name, address, zip_code, city, photo)
 
-simon = create_user('simon', '2 avenue des saules', '59000', 'Lille', 'https://ca.slack-edge.com/T02NE0241-UL7B9TJRW-8ac16206f4ef-48')
-moritz = create_user('moritz', '20 boulevard de la liberté', '59000', 'Lille', 'https://ca.slack-edge.com/T02NE0241-UL7BFB5QQ-0a2dc0a5ae19-48')
-franck = create_user('franck', '2 boulevard carnot', '59800', 'Lille', 'https://tmssl.akamaized.net/images/portrait/originals/5594-1542273058.jpg')
+simon = create_user('simon', 'azerty', '2 avenue des saules', '59000', 'Lille', 'https://ca.slack-edge.com/T02NE0241-UL7B9TJRW-8ac16206f4ef-48')
+moritz = create_user('moritz', 'qwertz', '20 boulevard de la liberté', '59000', 'Lille', 'https://ca.slack-edge.com/T02NE0241-UL7BFB5QQ-0a2dc0a5ae19-48')
+franck = create_user('franck', 'azerty', '2 boulevard carnot', '59800', 'Lille', 'https://tmssl.akamaized.net/images/portrait/originals/5594-1542273058.jpg')
 
 puts " #{User.count} CREATED ------------ "
 

@@ -17,15 +17,18 @@ class User < ApplicationRecord
   validates :zip_code, presence: true
   validates :city, presence: true
 
+  # retourne les demande de booking que l'on doit traiter
   def ducks_bookings
     array = []
-    p "------------"
-    p self.ducks
-    self.ducks.each do |duck|
+    ducks.each do |duck|
       duck.bookings.each do |booking|
         array << booking if booking.status == "pending" && booking.user != self
       end
     end
     return array
   end
+# retourne les ducks des autres utilisateurs
+def other_ducks
+  Duck.where()
+end
 end

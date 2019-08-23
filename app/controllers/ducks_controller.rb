@@ -1,14 +1,29 @@
 class DucksController < ApplicationController
+
+
+  before_action :set_duck, only: [:show, :edit, :update, :destroy]
+
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_duck, only: [:show, :edit, :update]
+
 
   def index
     @ducks = []
     if params[:city].present?
-      @users = User.where(city: params[:city].downcase.capitalize)
+      @users = User.where(city: params[:city].downcase.capitalize).where.not(id: current_user.id)
     else
-      @users = User.all
+      @users = User.where.not(id: current_user.id)
     end
+    @users.each do |user|
+      user.ducks.each do |duck|
+        if params[:start].present? && params[:end].present?
+        @ducks << duck if duck.bookable?(params[:start], params[:end])
+      else
+        @ducks << duck
+      end
+      end
+    end
+
   end
 
   def show

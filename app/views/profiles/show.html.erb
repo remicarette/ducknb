@@ -1,42 +1,51 @@
 
 <div class="container">
-  <div class="col-12 d-flex justify-content-around">
-    <div>
-      <% @user.ducks.each do |duck| %>
-        <div class="card-product d-flex justify-content-between w-100 m-3">
+  <div class="row">
+        <% @user.ducks.each do |duck| %>
+         <div class="col-12 col-sm-6 col-lg-4">
+          <%= link_to duck_path(duck) do %>
 
-          <!-- image  -->
-          <div class="d-flex align-items-center">
-            <div class="d-flex align-items-center">
-                  <%# image_tag , alt: picture.name, class:"avatar-duck"%>
-                  <%= cl_image_tag(duck.photo, width: 400, height: 300, crop: :fill, class: "avatar-duck" )%>
+            <div class="card-duck d-flex justify-content-between m-3">
+
+              <!-- CARD IMG & NAME  -->
+              <div class="d-flex align-items-center">
+
+                <!-- CARD IMG -->
+                <div class="d-flex align-items-center">
+                  <%= cl_image_tag(duck.photo, width: 400, height: 300, crop: :fill, class: "avatar" )%>
+                </div>
+
+                <!-- CARD NAME -->
+                <div class="card-duck-infos">
+                    <h2><%= duck.name.capitalize %></h2>
+                </div>
+
+              </div>
+
+              <div class="d-flex align-items-center">
+                <!-- EDIT BUTTON -->
+                <div class="mr-1">
+                  <%= link_to edit_duck_path(duck) do %>
+                    <%= image_tag "pencil.svg", alt: "alttext", class: "btn-edit" %>
+                  <% end %>
+                </div>
+
+                <!-- DELETE BUTTON  -->
+                <div>
+                  <%= link_to duck_path(duck),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } do %>
+                    <%= image_tag "trash-simple.svg", alt: "alttext", class: "btn-delete" %>
+                  <% end %>
+                </div>
+              </div>
+
             </div>
 
-            <!-- card -->
-            <div class="card-product-infos">
-                <h2><%= duck.name.capitalize %></h2>
-                <p>Product description with <strong>relevant info</strong> only.</p>
-            </div>
+          <% end %>
+
           </div>
-
-          <div class="d-flex align-items-center">
-            <div>
-              <%= link_to "More details", duck_path(duck), class: "btn btn-primary mx-2" %>
-            </div>
-
-            <div>
-              <%= link_to "Edit", duck_path(duck), class: "btn btn-warning mx-2" %>
-            </div>
-
-            <div>
-              <%= link_to "Delete", duck_path(duck),
-              method: :delete,
-              data: { confirm: "Are you sure?" },
-               class: "btn btn-danger mx-2"%>
-            </div>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
     </div>
-  </div>
+
 </div>
