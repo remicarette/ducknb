@@ -1,8 +1,10 @@
 class DucksController < ApplicationController
   before_action :set_duck, only: %i[show edit update destroy]
 
-  skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :set_duck, only: %i[show edit update]
+  before_action :set_duck, only: [:show, :edit, :update, :destroy]
+
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_duck, only: [:show, :edit, :update]
 
   def index
     @ducks = []
@@ -17,21 +19,15 @@ class DucksController < ApplicationController
           @ducks << duck if duck.bookable?(params[:start], params[:end])
         else
           @ducks << duck
-          end
         end
       end
     end
+  end
 
   def show
     @booking = Booking.new
     @carousel_counter = 1
     @duck = Duck.find(params[:id])
-  end
-
-  def search
-  end
-
-  def edit
   end
 
   def new
