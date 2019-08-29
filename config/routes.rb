@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :ducks do
     resources :bookings, only: :create
   end
-  resources :bookings, only: [:index, :destroy] do
+  resources :bookings, only: [:index, :show, :destroy] do
     resources :reviews, only: [:new, :create]
   end
   resources :reviews, only: [:edit, :update, :destroy]
